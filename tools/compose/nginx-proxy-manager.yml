@@ -44,7 +44,7 @@ services:
     environment:
       TIMEOUT: 10000
       CONCURRENT: 10
-      TOKEN: chrome_token
+      TOKEN: ${CHROME_TOKEN}
       EXIT_ON_HEALTH_FAILURE: true
       PRE_REQUEST_HEALTH_CHECK: true
 
@@ -74,7 +74,7 @@ services:
       STORAGE_URL: https://storage.example.com
 
       # -- Printer (Chrome) --
-      CHROME_TOKEN: chrome_token
+      CHROME_TOKEN: ${CHROME_TOKEN}
       CHROME_URL: wss://printer.example.com
 
       # -- Database (Postgres) --
