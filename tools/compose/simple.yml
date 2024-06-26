@@ -1,13 +1,7 @@
-version: "3.8"
-
-# In this Docker Compose example, it assumes that you maintain a reverse proxy externally (or chose not to).
-# The only two exposed ports here are from minio (:9000) and the app itself (:3000).
-# If these ports are changed, ensure that the env vars passed to the app are also changed accordingly.
-
 services:
   # Database (Postgres)
   postgres:
-    image: postgres:16-alpine
+    image: postgres:15
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -43,8 +37,18 @@ services:
       CONCURRENT: 10
       TOKEN: chrome_token
       EXIT_ON_HEALTH_FAILURE: true
-      PRE_REQUEST_HEALTH_CHECK: true
+      HEALTH: true
 
+  # Redis (for cache & server session management)
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Application
   app:
     image: amruthpillai/reactive-resume:latest
     restart: unless-stopped
@@ -54,6 +58,7 @@ services:
       - postgres
       - minio
       - chrome
+      - redis
     environment:
       # -- Environment Variables --
       PORT: 3000
@@ -106,6 +111,10 @@ services:
       # GOOGLE_CLIENT_SECRET: google_client_secret
       # GOOGLE_CALLBACK_URL: http://localhost:3000/api/auth/google/callback
 
+      # -- Redis (for cache & server session management) --
+      REDIS_URL: redis://redis:6379
+
 volumes:
   minio_data:
   postgres_data:
+  redis_data:
