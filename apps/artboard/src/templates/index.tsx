@@ -12,6 +12,7 @@ import { Nosepass } from "./nosepass";
 import { Onyx } from "./onyx";
 import { Pikachu } from "./pikachu";
 import { Rhyhorn } from "./rhyhorn";
+import { Sallas } from "./sallas";
 
 export const getTemplate = (template: Template) => {
   switch (template) {
@@ -50,6 +51,9 @@ export const getTemplate = (template: Template) => {
     }
     case "rhyhorn": {
       return Rhyhorn;
+    }
+    case "sallas": {
+      return Sallas;
     }
     default: {
       return Onyx;

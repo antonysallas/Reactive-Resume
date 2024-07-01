@@ -177,10 +177,10 @@ export class AuthService {
   }
 
   getAuthProviders() {
-    const providers: AuthProvidersDto = [];
+    const providers: AuthProvidersDto = new AuthProvidersDto({ providers: [] });
 
     if (!this.configService.get("DISABLE_EMAIL_AUTH")) {
-      providers.push("email");
+      providers.providers.push("email");
     }
 
     if (
@@ -188,7 +188,7 @@ export class AuthService {
       this.configService.get("GITHUB_CLIENT_SECRET") &&
       this.configService.get("GITHUB_CALLBACK_URL")
     ) {
-      providers.push("github");
+      providers.providers.push("github");
     }
 
     if (
@@ -196,7 +196,7 @@ export class AuthService {
       this.configService.get("GOOGLE_CLIENT_SECRET") &&
       this.configService.get("GOOGLE_CALLBACK_URL")
     ) {
-      providers.push("google");
+      providers.providers.push("google");
     }
 
     return providers;

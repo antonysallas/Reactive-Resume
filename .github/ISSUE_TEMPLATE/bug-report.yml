@@ -81,6 +81,7 @@ body:
         - Onyx
         - Pikachu
         - Rhyhorn
+        - Sallas
     validations:
       required: false
 

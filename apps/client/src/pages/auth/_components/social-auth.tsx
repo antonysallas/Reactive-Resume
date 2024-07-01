@@ -1,3 +1,4 @@
+// social-auth.tsx
 import { t } from "@lingui/macro";
 import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
 import { Button } from "@reactive-resume/ui";
@@ -5,13 +6,17 @@ import { Button } from "@reactive-resume/ui";
 import { useAuthProviders } from "@/client/services/auth/providers";
 
 export const SocialAuth = () => {
-  const { providers } = useAuthProviders();
+  const { providers, loading, error } = useAuthProviders();
 
-  if (!providers || providers.length === 0) return null;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading providers</p>;
+
+  // Ensure providers is an instance of AuthProvidersDto
+  if (!providers?.providers || providers.providers.length === 0) return null;
 
   return (
     <div className="grid grid-cols-2 gap-4">
-      {providers.includes("github") && (
+      {providers.providers.includes("github") && (
         <Button asChild size="lg" className="w-full !bg-[#222] !text-white hover:!bg-[#222]/80">
           <a href="/api/auth/github">
             <GithubLogo className="mr-3 size-4" />
@@ -20,7 +25,7 @@ export const SocialAuth = () => {
         </Button>
       )}
 
-      {providers.includes("google") && (
+      {providers.providers.includes("google") && (
         <Button
           asChild
           size="lg"

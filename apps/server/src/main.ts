@@ -5,12 +5,9 @@ import { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
-import { patchNestJsSwagger } from "nestjs-zod";
 
 import { AppModule } from "./app.module";
 import { Config } from "./config/schema";
-
-patchNestJsSwagger();
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {

@@ -1,6 +1,5 @@
 import { idSchema } from "@reactive-resume/schema";
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 import { secretsSchema } from "../secrets";
 
@@ -23,12 +22,93 @@ export const userSchema = z.object({
   emailVerified: z.boolean().default(false),
   twoFactorEnabled: z.boolean().default(false),
   provider: z.enum(["email", "github", "google"]).default("email"),
-  createdAt: z.date().or(z.dateString()),
-  updatedAt: z.date().or(z.dateString()),
+  createdAt: z.date().or(z.string()),
+  updatedAt: z.date().or(z.string()),
 });
 
-export class UserDto extends createZodDto(userSchema) {}
+export class UserDto {
+  id: typeof idSchema._type;
+  name: string;
+  picture: string | null | "";
+  username: string;
+  email: string;
+  locale: string;
+  emailVerified: boolean;
+  twoFactorEnabled: boolean;
+  provider: "email" | "github" | "google";
+  createdAt: Date | string;
+  updatedAt: Date | string;
+
+  constructor(data: {
+    id: typeof idSchema._type;
+    name: string;
+    picture: string | null | "";
+    username: string;
+    email: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    createdAt: Date | string;
+    updatedAt: Date | string;
+  }) {
+    const parsedData = userSchema.parse(data);
+    this.id = parsedData.id as typeof idSchema._type;
+    this.name = parsedData.name as string;
+    this.picture = parsedData.picture as string | null | "";
+    this.username = parsedData.username as string;
+    this.email = parsedData.email as string;
+    this.locale = parsedData.locale as string;
+    this.emailVerified = parsedData.emailVerified as boolean;
+    this.twoFactorEnabled = parsedData.twoFactorEnabled as boolean;
+    this.provider = parsedData.provider as "email" | "github" | "google";
+    this.createdAt = parsedData.createdAt as Date | string;
+    this.updatedAt = parsedData.updatedAt as Date | string;
+  }
+}
 
 export const userWithSecretsSchema = userSchema.merge(z.object({ secrets: secretsSchema }));
 
-export class UserWithSecrets extends createZodDto(userWithSecretsSchema) {}
+export class UserWithSecrets {
+  id: typeof idSchema._type;
+  name: string;
+  picture: string | null | "";
+  username: string;
+  email: string;
+  locale: string;
+  emailVerified: boolean;
+  twoFactorEnabled: boolean;
+  provider: "email" | "github" | "google";
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  secrets: typeof secretsSchema._type;
+
+  constructor(data: {
+    id: typeof idSchema._type;
+    name: string;
+    picture: string | null | "";
+    username: string;
+    email: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    createdAt: Date | string;
+    updatedAt: Date | string;
+    secrets: typeof secretsSchema._type;
+  }) {
+    const parsedData = userWithSecretsSchema.parse(data);
+    this.id = parsedData.id as typeof idSchema._type;
+    this.name = parsedData.name as string;
+    this.picture = parsedData.picture as string | null | "";
+    this.username = parsedData.username as string;
+    this.email = parsedData.email as string;
+    this.locale = parsedData.locale as string;
+    this.emailVerified = parsedData.emailVerified as boolean;
+    this.twoFactorEnabled = parsedData.twoFactorEnabled as boolean;
+    this.provider = parsedData.provider as "email" | "github" | "google";
+    this.createdAt = parsedData.createdAt as Date | string;
+    this.updatedAt = parsedData.updatedAt as Date | string;
+    this.secrets = parsedData.secrets as typeof secretsSchema._type;
+  }
+}

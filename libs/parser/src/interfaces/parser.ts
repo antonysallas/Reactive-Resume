@@ -1,9 +1,8 @@
 import { ResumeData } from "@reactive-resume/schema";
-import { ZodDto } from "nestjs-zod/dto";
-import { Schema } from "zod";
+import { z, ZodSchema } from "zod";
 
-export type Parser<Data = unknown, T = ZodDto, Result = ResumeData> = {
-  schema?: Schema;
+export type Parser<Data = unknown, T = z.infer<ZodSchema>, Result = ResumeData> = {
+  schema?: ZodSchema;
 
   readFile(file: File): Promise<Data>;
 

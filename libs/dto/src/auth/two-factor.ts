@@ -1,5 +1,4 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const twoFactorSchema = z.object({
   code: z
@@ -8,16 +7,37 @@ export const twoFactorSchema = z.object({
     .regex(/^\d+$/, { message: "Code must be a 6 digit number" }),
 });
 
-export class TwoFactorDto extends createZodDto(twoFactorSchema) {}
+export class TwoFactorDto {
+  code: string;
+
+  constructor(data: { code: string }) {
+    const parsedData = twoFactorSchema.parse(data);
+    this.code = parsedData.code;
+  }
+}
 
 export const backupCodesSchema = z.object({
   backupCodes: z.array(z.string().length(10)),
 });
 
-export class BackupCodesDto extends createZodDto(backupCodesSchema) {}
+export class BackupCodesDto {
+  backupCodes: string[];
+
+  constructor(data: { backupCodes: string[] }) {
+    const parsedData = backupCodesSchema.parse(data);
+    this.backupCodes = parsedData.backupCodes;
+  }
+}
 
 export const twoFactorBackupSchema = z.object({
   code: z.string().length(10),
 });
 
-export class TwoFactorBackupDto extends createZodDto(twoFactorBackupSchema) {}
+export class TwoFactorBackupDto {
+  code: string;
+
+  constructor(data: { code: string }) {
+    const parsedData = twoFactorBackupSchema.parse(data);
+    this.code = parsedData.code;
+  }
+}

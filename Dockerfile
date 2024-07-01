@@ -1,7 +1,7 @@
 ARG NX_CLOUD_ACCESS_TOKEN
 
 # --- Base Image ---
-FROM node:lts-bullseye-slim AS base
+FROM node:20-bullseye-slim AS base
 ARG NX_CLOUD_ACCESS_TOKEN
 
 ENV PNPM_HOME="/pnpm"
@@ -23,6 +23,9 @@ COPY . .
 
 ENV NX_CLOUD_ACCESS_TOKEN=$NX_CLOUD_ACCESS_TOKEN
 
+# Install @swc/helpers
+RUN pnpm add @swc/helpers
+
 RUN pnpm run build
 
 # --- Release Image ---
@@ -36,6 +39,8 @@ RUN pnpm install --prod --frozen-lockfile
 
 COPY --chown=node:node --from=build /app/dist ./dist
 COPY --chown=node:node --from=build /app/tools/prisma ./tools/prisma
+RUN pnpm add prisma
+
 RUN pnpm run prisma:generate
 
 ENV TZ=UTC

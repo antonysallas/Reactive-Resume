@@ -1,6 +1,13 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
+
 
 export const forgotPasswordSchema = z.object({ email: z.string().email() });
 
-export class ForgotPasswordDto extends createZodDto(forgotPasswordSchema) {}
+export class ForgotPasswordDto {
+  email: string;
+
+  constructor(email: string) {
+    this.email = forgotPasswordSchema.parse({ email }).email;
+  }
+}
+

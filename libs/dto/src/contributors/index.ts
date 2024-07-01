@@ -1,5 +1,4 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const contributorSchema = z.object({
   id: z.number(),
@@ -8,4 +7,17 @@ export const contributorSchema = z.object({
   avatar: z.string(),
 });
 
-export class ContributorDto extends createZodDto(contributorSchema) {}
+export class ContributorDto {
+  id: number;
+  name: string;
+  url: string;
+  avatar: string;
+
+  constructor(data: { id: number; name: string; url: string; avatar: string }) {
+    const parsedData = contributorSchema.parse(data);
+    this.id = parsedData.id;
+    this.name = parsedData.name;
+    this.url = parsedData.url;
+    this.avatar = parsedData.avatar;
+  }
+}

@@ -14,13 +14,17 @@ const authRoutes = [{ path: "/auth/login" }, { path: "/auth/register" }];
 
 export const AuthLayout = () => {
   const location = useLocation();
-  const { providers } = useAuthProviders();
+  const { providers, loading, error } = useAuthProviders();
   const isAuthRoute = useMemo(() => matchRoutes(authRoutes, location) !== null, [location]);
 
-  if (!providers) return null;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading providers</p>;
 
-  // Condition (providers.length === 1) hides the divider if providers[] includes only "email"
-  const hideDivider = !providers.includes("email") || providers.length === 1;
+  // Ensure providers is an instance of AuthProvidersDto
+  if (!providers?.providers) return null;
+
+  // Condition (providers.providers.length === 1) hides the divider if providers[] includes only "email"
+  const hideDivider = !providers.providers.includes("email") || providers.providers.length === 1;
 
   return (
     // eslint-disable-next-line tailwindcss/enforces-shorthand -- size-screen not implemented yet

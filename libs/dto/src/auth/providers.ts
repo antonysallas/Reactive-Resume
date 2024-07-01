@@ -1,6 +1,12 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 const authProvidersSchema = z.array(z.enum(["email", "github", "google"]));
 
-export class AuthProvidersDto extends createZodDto(authProvidersSchema) {}
+export class AuthProvidersDto {
+  providers: ("email" | "github" | "google")[];
+
+  constructor(data: { providers: ("email" | "github" | "google")[] }) {
+    const parsedData = authProvidersSchema.parse(data.providers);
+    this.providers = parsedData;
+  }
+}

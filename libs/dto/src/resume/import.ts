@@ -1,7 +1,6 @@
 import { resumeDataSchema } from "@reactive-resume/schema";
 import { kebabCase } from "@reactive-resume/utils";
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const importResumeSchema = z.object({
   title: z.string().optional(),
@@ -10,4 +9,17 @@ export const importResumeSchema = z.object({
   data: resumeDataSchema,
 });
 
-export class ImportResumeDto extends createZodDto(importResumeSchema) {}
+export class ImportResumeDto {
+  title?: string;
+  slug?: string;
+  visibility?: "public" | "private";
+  data: typeof resumeDataSchema._type;
+
+  constructor(data: { title?: string; slug?: string; visibility?: "public" | "private"; data: typeof resumeDataSchema._type }) {
+    const parsedData = importResumeSchema.parse(data);
+    this.title = parsedData.title;
+    this.slug = parsedData.slug;
+    this.visibility = parsedData.visibility;
+    this.data = parsedData.data;
+  }
+}

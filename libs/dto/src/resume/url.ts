@@ -1,6 +1,12 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const urlSchema = z.object({ url: z.string().url() });
 
-export class UrlDto extends createZodDto(urlSchema) {}
+export class UrlDto {
+  url: string;
+
+  constructor(data: { url: string }) {
+    const parsedData = urlSchema.parse(data);
+    this.url = parsedData.url;
+  }
+}

@@ -65,7 +65,7 @@ export const PictureSection = () => {
         )}
       </div>
 
-      <div className="flex w-full flex-col gap-y-1.5">
+      <div className="flex w-full flex-col gap-y-1.5" style={{ order: 0 }}>
         <Label htmlFor="basics.picture.url">{t`Picture`}</Label>
         <div className="flex items-center gap-x-2">
           <input ref={inputRef} hidden type="file" onChange={onSelectImage} />

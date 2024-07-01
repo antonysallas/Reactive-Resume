@@ -29,12 +29,14 @@ const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
 
   return (
-    <div className="flex items-center space-x-4">
-      <Picture />
+    <div className="flex items-center space-x-4 justify-between">
+      <div className="flex items-center space-x-4">
+        <Picture />
 
-      <div>
-        <div className="text-2xl font-bold">{basics.name}</div>
-        <div className="text-base">{basics.headline}</div>
+        <div>
+          <div className="text-2xl font-bold">{basics.name}</div>
+          <div className="text-base">{basics.headline}</div>
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
@@ -67,6 +69,18 @@ const Header = () => {
             <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
           </div>
         ))}
+      </div>
+
+      <div className="flex space-x-2">
+        <div className="w-12 h-12 bg-gray-200 flex items-center justify-center">
+          <span>Logo 1</span>
+        </div>
+        <div className="w-12 h-12 bg-gray-200 flex items-center justify-center">
+          <span>Logo 2</span>
+        </div>
+        <div className="w-12 h-12 bg-gray-200 flex items-center justify-center">
+          <span>Logo 3</span>
+        </div>
       </div>
     </div>
   );
@@ -569,7 +583,7 @@ const mapSectionToComponent = (section: SectionKey) => {
   }
 };
 
-export const Bronzor = ({ columns, isFirstPage = false }: TemplateProps) => {
+export const Sallas = ({ columns, isFirstPage = false }: TemplateProps) => {
   const [main, sidebar] = columns;
 
   return (

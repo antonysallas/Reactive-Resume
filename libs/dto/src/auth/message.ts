@@ -1,6 +1,12 @@
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const messageSchema = z.object({ message: z.string() });
 
-export class MessageDto extends createZodDto(messageSchema) {}
+export class MessageDto {
+  message: string;
+
+  constructor(data: { message: string }) {
+    const parsedData = messageSchema.parse(data);
+    this.message = parsedData.message;
+  }
+}

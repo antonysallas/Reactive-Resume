@@ -1,6 +1,5 @@
 import { kebabCase } from "@reactive-resume/utils";
-import { createZodDto } from "nestjs-zod/dto";
-import { z } from "nestjs-zod/z";
+import { z } from "zod";
 
 export const createResumeSchema = z.object({
   title: z.string().min(1),
@@ -8,4 +7,15 @@ export const createResumeSchema = z.object({
   visibility: z.enum(["public", "private"]).default("private"),
 });
 
-export class CreateResumeDto extends createZodDto(createResumeSchema) {}
+export class CreateResumeDto {
+  title: string;
+  slug?: string;
+  visibility: "public" | "private";
+
+  constructor(data: { title: string; slug?: string; visibility?: "public" | "private" }) {
+    const parsedData = createResumeSchema.parse(data);
+    this.title = parsedData.title;
+    this.slug = parsedData.slug;
+    this.visibility = parsedData.visibility;
+  }
+}
