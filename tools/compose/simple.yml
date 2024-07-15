@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Database (Postgres)
   postgres:
-    image: postgres:16
+    image: postgres:latest
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -19,7 +19,7 @@ services:
 
   # Storage (for image uploads)
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     restart: unless-stopped
     command: server /data
     ports:
@@ -134,6 +134,7 @@ services:
 
       # -- Redis (for cache & server session management) --
       REDIS_URL: redis://redis:6379
+    platform: linux/amd64
 
 volumes:
   minio_data:

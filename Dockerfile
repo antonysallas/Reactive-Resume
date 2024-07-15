@@ -1,8 +1,5 @@
-ARG NX_CLOUD_ACCESS_TOKEN
-
 # --- Base Image ---
 FROM node:20-bullseye-slim AS base
-ARG NX_CLOUD_ACCESS_TOKEN
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -21,26 +18,23 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-ENV NX_CLOUD_ACCESS_TOKEN=$NX_CLOUD_ACCESS_TOKEN
-
-# Install @swc/helpers
-RUN pnpm add @swc/helpers
-
-RUN pnpm run build
+# Install @swc/helpers and build
+RUN pnpm add @swc/helpers && pnpm run build
 
 # --- Release Image ---
 FROM base AS release
-ARG NX_CLOUD_ACCESS_TOKEN
 
 RUN apt update && apt install -y dumb-init --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-COPY --chown=node:node --from=build /app/.npmrc /app/package.json /app/pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
+# Copy only necessary files for production
+COPY --from=build /app/.npmrc /app/package.json /app/pnpm-lock.yaml ./
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/tools/prisma ./tools/prisma
 
-COPY --chown=node:node --from=build /app/dist ./dist
-COPY --chown=node:node --from=build /app/tools/prisma ./tools/prisma
-RUN pnpm add prisma
+# Install production dependencies and Prisma
+RUN pnpm install --prod --frozen-lockfile && pnpm add prisma
 
+# Generate Prisma client
 RUN pnpm run prisma:generate
 
 ENV TZ=UTC
