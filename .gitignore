@@ -52,3 +52,4 @@ apps/client/src/locales/_build/
 apps/client/src/locales/*/messages.mjs
 
 **/.claude/settings.local.json
+docs/
