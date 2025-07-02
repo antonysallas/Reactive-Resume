@@ -101,20 +101,59 @@ export class PrinterService {
 
       let url = publicUrl;
 
-      if ([publicUrl, storageUrl].some((url) => url.includes("localhost"))) {
+      const localhostUrls = [publicUrl, storageUrl].filter((url) => url.includes("localhost"));
+      console.log('localhostUrls in generateResume:', localhostUrls);
+
+      if (localhostUrls.length > 0) {
         // Switch client URL from `localhost` to `host.docker.internal` in development
-        // This is required because the browser is running in a container and the client is running on the host machine.
+        // This bypasses internal container networking that may be causing HTTPS redirects
         url = url.replace("localhost", "host.docker.internal");
 
         await page.setRequestInterception(true);
 
-        // Intercept requests of `localhost` to `host.docker.internal` in development
-        page.on("request", (request) => {
-          if (request.url().startsWith(storageUrl)) {
-            const modifiedUrl = request.url().replace("localhost", `host.docker.internal`);
+        // Extract localhost hostnames to replace with host.docker.internal
+        const localhostHosts = new Set(
+          localhostUrls
+            .map((urlString) => {
+              try {
+                return new URL(urlString).host;
+              } catch {
+                return null;
+              }
+            })
+            .filter(Boolean),
+        );
+        console.log('localhostHosts:', localhostHosts);
 
-            void request.continue({ url: modifiedUrl });
-          } else {
+
+        // Intercept requests to localhost hosts and redirect to internal service names
+        page.on("request", (request) => {
+          try {
+            const requestUrl = new URL(request.url());
+            const needsReplacement = localhostHosts.has(requestUrl.host);
+
+            if (needsReplacement) {
+              let modifiedUrl = request.url();
+
+              // Replace localhost:3000 with host.docker.internal:3000 (main application)
+              if (requestUrl.port === "3000" || requestUrl.hostname === "localhost") {
+                modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "host.docker.internal");
+              }
+              // Replace localhost:9000 with minio:9000 (MinIO storage)
+              else if (requestUrl.port === "9000") {
+                modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "minio");
+              }
+              // Fallback for other localhost URLs
+              else {
+                modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "host.docker.internal");
+              }
+
+              console.log(`Replacing request URL in generateResume: ${request.url()} -> ${modifiedUrl}`);
+              void request.continue({ url: modifiedUrl });
+            } else {
+              void request.continue();
+            }
+          } catch {
             void request.continue();
           }
         });
@@ -127,7 +166,12 @@ export class PrinterService {
         window.localStorage.setItem("resume", JSON.stringify(data));
       }, resume.data);
 
-      await page.goto(`${url}/artboard/preview`, { waitUntil: "networkidle0" });
+      console.log(`Attempting to navigate to: ${url}/artboard/preview`);
+
+      await page.goto(`${url}/artboard/preview`, {
+        waitUntil: "networkidle0",
+        timeout: 30000
+      });
 
       const pagesBuffer: Buffer[] = [];
 
@@ -215,20 +259,57 @@ export class PrinterService {
 
     let url = publicUrl;
 
-    if ([publicUrl, storageUrl].some((url) => url.includes("localhost"))) {
+    const localhostUrls = [publicUrl, storageUrl].filter((url) => url.includes("localhost"));
+    console.log('localhostUrls in generatePreview:', localhostUrls);
+
+    if (localhostUrls.length > 0) {
       // Switch client URL from `localhost` to `host.docker.internal` in development
-      // This is required because the browser is running in a container and the client is running on the host machine.
+      // This bypasses internal container networking that may be causing HTTPS redirects
       url = url.replace("localhost", "host.docker.internal");
 
       await page.setRequestInterception(true);
 
-      // Intercept requests of `localhost` to `host.docker.internal` in development
-      page.on("request", (request) => {
-        if (request.url().startsWith(storageUrl)) {
-          const modifiedUrl = request.url().replace("localhost", `host.docker.internal`);
+      // Extract localhost hostnames to replace with host.docker.internal
+      const localhostHosts = new Set(
+        localhostUrls
+          .map((urlString) => {
+            try {
+              return new URL(urlString).host;
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean),
+      );
 
-          void request.continue({ url: modifiedUrl });
-        } else {
+      // Intercept requests to localhost hosts and redirect to internal service names
+      page.on("request", (request) => {
+        try {
+          const requestUrl = new URL(request.url());
+          const needsReplacement = localhostHosts.has(requestUrl.host);
+
+          if (needsReplacement) {
+            let modifiedUrl = request.url();
+
+            // Replace localhost:3000 with host.docker.internal:3000 (main application)
+            if (requestUrl.port === "3000" || requestUrl.hostname === "localhost") {
+              modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "host.docker.internal");
+            }
+            // Replace localhost:9000 with minio:9000 (MinIO storage)
+            else if (requestUrl.port === "9000") {
+              modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "minio");
+            }
+            // Fallback for other localhost URLs
+            else {
+              modifiedUrl = modifiedUrl.replace(requestUrl.hostname, "host.docker.internal");
+            }
+
+            console.log(`Replacing request URL in generatePreview: ${request.url()} -> ${modifiedUrl}`);
+            void request.continue({ url: modifiedUrl });
+          } else {
+            void request.continue();
+          }
+        } catch {
           void request.continue();
         }
       });

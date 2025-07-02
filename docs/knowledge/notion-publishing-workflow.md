@@ -1,0 +1,1 @@
+/Users/asallasd/workarea/projects/personal/workspace-setup/docs/knowledge/notion-publishing-workflow.md

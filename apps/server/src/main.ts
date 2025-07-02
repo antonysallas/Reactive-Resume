@@ -27,9 +27,17 @@ async function bootstrap() {
     origin: process.env.NODE_ENV === "production",
   });
 
+  // Disable HTTPS enforcement in development
+  if (process.env.NODE_ENV === "development") {
+    app.getHttpAdapter().getInstance().set('trust proxy', false);
+  }
+
   // Helmet - enabled only in production
   if (process.env.NODE_ENV === "production") {
-    app.use(helmet({ contentSecurityPolicy: false }));
+    app.use(helmet({
+      contentSecurityPolicy: false,
+      hsts: false // Disable HSTS to prevent HTTPS redirects in containers
+    }));
   }
 
   // Global Prefix

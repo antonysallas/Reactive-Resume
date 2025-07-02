@@ -1,0 +1,88 @@
+### Category
+
+{{ category or "<!-- Choose one: App, DB, Dev, UI, Performance, Security -->" }}
+
+### Summary
+
+{{ summary or "<!-- A brief 1-2 sentence description of the issue -->" }}
+
+### Description
+
+{{ description or "<!-- Detailed explanation of the problem -->" }}
+
+### Steps to Reproduce
+
+{% if steps_to_reproduce %}
+{% for step in steps_to_reproduce %}
+{{ loop.index }}. {{ step }}
+{% endfor %}
+{% else %}
+1.
+2.
+3.
+{% endif %}
+
+### Expected Behavior
+
+{{ expected_behavior or "<!-- What should happen -->" }}
+
+### Actual Behavior
+
+{{ actual_behavior or "<!-- What actually happens -->" }}
+
+### Error Messages/Logs
+
+```shell
+{{ error_logs or "<!-- Paste any relevant error messages or logs here -->" }}
+```
+
+### Examples
+<!-- For transcription issues, include file examples -->
+**Sample Files:**
+{% if sample_files %}
+{% for file in sample_files %}
+
+- {{ file }}
+{% endfor %}
+{% else %}
+-
+-
+
+{% endif %}
+
+**Sample Output:**
+
+```shell
+{{ sample_output or "<!-- Paste any relevant output here -->" }}
+```
+
+### Environment
+
+- OS: {{ os or "<!-- e.g., macOS 13.5 -->" }}
+- Python Version: {{ python_version or "<!-- e.g., 3.10.2 -->" }}
+- Dependencies: {{ dependencies or "<!-- Any specific package versions relevant to the issue -->" }}
+
+### Suggested Fix (optional)
+
+{{ suggested_fix or "<!-- If you have ideas on how to fix it -->" }}
+
+### Related Files
+<!-- List any files you suspect are involved -->
+{% if related_files %}
+{% for file in related_files %}
+
+- {{ file }}
+{% endfor %}
+{% else %}
+-
+-
+
+{% endif %}
+
+### Priority
+
+{{ priority or "<!-- Choose one: Low, Medium, High, Critical -->" }}
+
+### Additional Context
+
+{{ additional_context or "<!-- Any other relevant information -->" }}

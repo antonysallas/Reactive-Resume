@@ -24,6 +24,7 @@ import { Fragment } from "react";
 import { Picture } from "../components/picture";
 import { useArtboardStore } from "../store/artboard";
 import { TemplateProps } from "../types/template";
+import { getSocialIconUrl } from "../utils/social-icons";
 
 const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
@@ -267,7 +268,7 @@ const Profiles = () => {
                   width={fontSize}
                   height={fontSize}
                   alt={item.network}
-                  src={`https://cdn.simpleicons.org/${item.icon}`}
+                  src={getSocialIconUrl(item.icon)}
                 />
               }
             />

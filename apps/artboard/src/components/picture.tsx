@@ -10,7 +10,18 @@ export const Picture = ({ className }: PictureProps) => {
   const picture = useArtboardStore((state) => state.resume.basics.picture);
   const fontSize = useArtboardStore((state) => state.resume.metadata.typography.font.size);
 
-  if (!isUrl(picture.url) || picture.effects.hidden) return null;
+  console.log("🖼️ Picture component debug:", {
+    url: picture.url,
+    isValidUrl: isUrl(picture.url),
+    hidden: picture.effects.hidden,
+    size: picture.size,
+    aspectRatio: picture.aspectRatio
+  });
+
+  if (!isUrl(picture.url) || picture.effects.hidden) {
+    console.log("🚫 Picture not rendering - invalid URL or hidden");
+    return null;
+  }
 
   return (
     <img
@@ -28,6 +39,8 @@ export const Picture = ({ className }: PictureProps) => {
         borderRadius: `${picture.borderRadius}px`,
         borderWidth: `${picture.effects.border ? fontSize / 3 : 0}px`,
       }}
+      onLoad={() => console.log("✅ Picture loaded successfully:", picture.url)}
+      onError={(e) => console.error("❌ Picture failed to load:", picture.url, e)}
     />
   );
 };
