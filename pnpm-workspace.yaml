@@ -1,0 +1,14 @@
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - '@parcel/watcher'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - '@scarf/scarf'
+  - '@swc/core'
+  - core-js
+  - esbuild
+  - nx
+  - prisma
+  - puppeteer
+  - sharp
+  - unrs-resolver
