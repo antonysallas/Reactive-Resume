@@ -20,8 +20,8 @@ import { cn } from "@reactive-resume/utils";
 import { useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { z } from "zod";
+import { Link, useNavigate } from "react-router";
+import type { z } from "zod";
 
 import { useRegister } from "@/client/services/auth";
 import { useFeatureFlags } from "@/client/services/feature";
@@ -51,7 +51,7 @@ export const RegisterPage = () => {
     try {
       await register(data);
 
-      navigate("/auth/verify-email");
+      void navigate("/auth/verify-email");
     } catch {
       form.reset();
     }
@@ -119,6 +119,7 @@ export const RegisterPage = () => {
                   <FormLabel>{t`Username`}</FormLabel>
                   <FormControl>
                     <Input
+                      className="lowercase"
                       placeholder={t({
                         message: "john.doe",
                         context:
@@ -140,6 +141,7 @@ export const RegisterPage = () => {
                   <FormLabel>{t`Email`}</FormLabel>
                   <FormControl>
                     <Input
+                      className="lowercase"
                       placeholder={t({
                         message: "john.doe@example.com",
                         context:

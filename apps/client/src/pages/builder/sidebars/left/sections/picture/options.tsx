@@ -1,13 +1,6 @@
 import { t } from "@lingui/macro";
-import {
-  AspectRatio,
-  Checkbox,
-  Input,
-  Label,
-  ToggleGroup,
-  ToggleGroupItem,
-  Tooltip,
-} from "@reactive-resume/ui";
+import type { AspectRatio } from "@reactive-resume/ui";
+import { Checkbox, Input, Label, ToggleGroup, ToggleGroupItem, Tooltip } from "@reactive-resume/ui";
 import { useMemo } from "react";
 
 import { useResumeStore } from "@/client/stores/resume";
@@ -51,8 +44,9 @@ export const PictureOptions = () => {
     return ratioToStringMap[ratio];
   }, [picture.aspectRatio]);
 
-  const onAspectRatioChange = (value: AspectRatio) => {
-    setValue("basics.picture.aspectRatio", stringToRatioMap[value]);
+  const onAspectRatioChange = (value: string) => {
+    if (!value) return;
+    setValue("basics.picture.aspectRatio", stringToRatioMap[value as AspectRatio]);
   };
 
   const borderRadius = useMemo(() => {
@@ -60,8 +54,9 @@ export const PictureOptions = () => {
     return borderRadiusToStringMap[radius];
   }, [picture.borderRadius]);
 
-  const onBorderRadiusChange = (value: BorderRadius) => {
-    setValue("basics.picture.borderRadius", stringToBorderRadiusMap[value]);
+  const onBorderRadiusChange = (value: string) => {
+    if (!value) return;
+    setValue("basics.picture.borderRadius", stringToBorderRadiusMap[value as BorderRadius]);
   };
 
   return (
@@ -117,6 +112,8 @@ export const PictureOptions = () => {
             id="picture.aspectRatio"
             value={picture.aspectRatio}
             onChange={(event) => {
+              if (!event.target.valueAsNumber) return;
+              if (Number.isNaN(event.target.valueAsNumber)) return;
               setValue("basics.picture.aspectRatio", event.target.valueAsNumber);
             }}
           />

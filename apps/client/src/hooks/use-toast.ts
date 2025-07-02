@@ -1,5 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { ToastActionElement, ToastProps } from "@reactive-resume/ui";
+import type { ToastActionElement, ToastProps } from "@reactive-resume/ui";
 import { useEffect, useState } from "react";
 
 const TOAST_LIMIT = 1;
@@ -13,7 +13,7 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement;
 };
 
-const actionTypes = {
+export const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
   UPDATE_TOAST: "UPDATE_TOAST",
   DISMISS_TOAST: "DISMISS_TOAST",

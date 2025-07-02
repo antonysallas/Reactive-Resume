@@ -17,7 +17,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { SectionDialog } from "../sections/shared/section-dialog";
 
@@ -88,10 +88,10 @@ export const SkillsDialog = () => {
                     }}
                   />
 
-                  {field.value === 0 ? (
-                    <span className="text-base font-bold">{t`Hidden`}</span>
-                  ) : (
+                  {field.value > 0 ? (
                     <span className="text-base font-bold">{field.value}</span>
+                  ) : (
+                    <span className="text-base font-bold">{t`Hidden`}</span>
                   )}
                 </div>
               </FormControl>

@@ -35,6 +35,7 @@ import { GitHubGuard } from "./guards/github.guard";
 import { GoogleGuard } from "./guards/google.guard";
 import { JwtGuard } from "./guards/jwt.guard";
 import { LocalGuard } from "./guards/local.guard";
+import { OpenIDGuard } from "./guards/openid.guard";
 import { RefreshGuard } from "./guards/refresh.guard";
 import { TwoFactorGuard } from "./guards/two-factor.guard";
 import { getCookieOptions } from "./utils/cookie";
@@ -147,6 +148,23 @@ export class AuthController {
     return this.handleAuthenticationResponse(user, response, false, true);
   }
 
+  @ApiTags("OAuth", "OpenID")
+  @Get("openid")
+  @UseGuards(OpenIDGuard)
+  openidLogin() {
+    return;
+  }
+
+  @ApiTags("OAuth", "OpenID")
+  @Get("openid/callback")
+  @UseGuards(OpenIDGuard)
+  async openidCallback(
+    @User() user: UserWithSecrets,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    return this.handleAuthenticationResponse(user, response, false, true);
+  }
+
   @Post("refresh")
   @UseGuards(RefreshGuard)
   async refresh(@User() user: UserWithSecrets, @Res({ passthrough: true }) response: Response) {
@@ -155,8 +173,11 @@ export class AuthController {
 
   @Patch("password")
   @UseGuards(TwoFactorGuard)
-  async updatePassword(@User("email") email: string, @Body() { password }: UpdatePasswordDto) {
-    await this.authService.updatePassword(email, password);
+  async updatePassword(
+    @User("email") email: string,
+    @Body() { currentPassword, newPassword }: UpdatePasswordDto,
+  ) {
+    await this.authService.updatePassword(email, currentPassword, newPassword);
 
     return { message: "Your password has been successfully updated." };
   }

@@ -1,10 +1,12 @@
 import { useEffect, useMemo } from "react";
-import { Outlet } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { Outlet } from "react-router";
 import webfontloader from "webfontloader";
 
 import { useArtboardStore } from "../store/artboard";
 
 export const ArtboardPage = () => {
+  const name = useArtboardStore((state) => state.resume.basics.name);
   const metadata = useArtboardStore((state) => state.resume.metadata);
 
   const fontString = useMemo(() => {
@@ -55,5 +57,18 @@ export const ArtboardPage = () => {
     }
   }, [metadata]);
 
-  return <Outlet />;
+  return (
+    <>
+      <Helmet>
+        <title>{name} | Reactive Resume</title>
+        {metadata.css.visible && (
+          <style id="custom-css" lang="css">
+            {metadata.css.value}
+          </style>
+        )}
+      </Helmet>
+
+      <Outlet />
+    </>
+  );
 };

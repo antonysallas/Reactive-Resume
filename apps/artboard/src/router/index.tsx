@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromChildren, Route } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromChildren, Route } from "react-router";
 
 import { ArtboardPage } from "../pages/artboard";
 import { BuilderLayout } from "../pages/builder";

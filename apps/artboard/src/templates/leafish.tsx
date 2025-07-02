@@ -1,10 +1,8 @@
-import {
+import type {
   Award,
   Certification,
   CustomSection,
   CustomSectionGroup,
-  Education,
-  Experience,
   Interest,
   Language,
   Project,
@@ -14,23 +12,21 @@ import {
   SectionWithItem,
   Skill,
   URL,
-  Volunteer,
 } from "@reactive-resume/schema";
-import { cn, hexToRgb, isEmptyString, isUrl } from "@reactive-resume/utils";
+import { Education, Experience, Volunteer } from "@reactive-resume/schema";
+import { cn, hexToRgb, isEmptyString, isUrl, sanitize } from "@reactive-resume/utils";
 import get from "lodash.get";
 import React, { Fragment } from "react";
 
 import { Picture } from "../components/picture";
 import { useArtboardStore } from "../store/artboard";
 import { TemplateProps } from "../types/template";
-import { getSocialIconUrl } from "../utils/social-icons";
 
 const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
   const section = useArtboardStore((state) => state.resume.sections.summary);
   const profiles = useArtboardStore((state) => state.resume.sections.profiles);
   const primaryColor = useArtboardStore((state) => state.resume.metadata.theme.primary);
-  const fontSize = useArtboardStore((state) => state.resume.metadata.typography.font.size);
 
   return (
     <div>
@@ -45,9 +41,9 @@ const Header = () => {
           </div>
 
           <div
-            dangerouslySetInnerHTML={{ __html: section.content }}
-            className="wysiwyg"
+            dangerouslySetInnerHTML={{ __html: sanitize(section.content) }}
             style={{ columns: section.columns }}
+            className="wysiwyg"
           />
         </div>
 
@@ -82,7 +78,13 @@ const Header = () => {
           {basics.customFields.map((item) => (
             <div key={item.id} className="flex items-center gap-x-1.5">
               <i className={cn(`ph ph-bold ph-${item.icon}`, "text-primary")} />
-              <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+              {isUrl(item.value) ? (
+                <a href={item.value} target="_blank" rel="noreferrer noopener nofollow">
+                  {item.name || item.value}
+                </a>
+              ) : (
+                <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+              )}
             </div>
           ))}
         </div>
@@ -221,7 +223,10 @@ const Section = <T,>({
                 <div>{children?.(item as T)}</div>
 
                 {summary !== undefined && !isEmptyString(summary) && (
-                  <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: sanitize(summary) }}
+                    className="wysiwyg"
+                  />
                 )}
 
                 {level !== undefined && level > 0 && <Rating level={level} />}
@@ -522,13 +527,13 @@ export const Leafish = ({ columns, isFirstPage = false }: TemplateProps) => {
       {isFirstPage && <Header />}
 
       <div className="p-custom grid grid-cols-2 items-start space-x-6">
-        <div className="grid gap-y-4">
+        <div className={cn("grid gap-y-4", sidebar.length === 0 && "col-span-2")}>
           {main.map((section) => (
             <Fragment key={section}>{mapSectionToComponent(section)}</Fragment>
           ))}
         </div>
 
-        <div className="grid gap-y-4">
+        <div className={cn("grid gap-y-4", sidebar.length === 0 && "hidden")}>
           {sidebar.map((section) => (
             <Fragment key={section}>{mapSectionToComponent(section)}</Fragment>
           ))}

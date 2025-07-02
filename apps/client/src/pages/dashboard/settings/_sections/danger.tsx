@@ -11,7 +11,7 @@ import {
   Input,
 } from "@reactive-resume/ui";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useCounter } from "usehooks-ts";
 import { z } from "zod";
 
@@ -45,14 +45,14 @@ export const DangerZoneSettings = () => {
 
     // On the second click, delete the account
     if (count === 1) {
-      await Promise.all([deleteUser, logout]);
+      await Promise.all([deleteUser(), logout()]);
 
       toast({
         variant: "success",
         title: t`Your account and all your data has been deleted successfully. Goodbye!`,
       });
 
-      navigate("/");
+      void navigate("/");
     }
   };
 

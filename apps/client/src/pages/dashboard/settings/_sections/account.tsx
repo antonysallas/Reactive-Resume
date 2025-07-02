@@ -1,7 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/macro";
 import { Check, UploadSimple, Warning } from "@phosphor-icons/react";
-import { UpdateUserDto, updateUserSchema } from "@reactive-resume/dto";
+import type { UpdateUserDto } from "@reactive-resume/dto";
+import { updateUserSchema } from "@reactive-resume/dto";
 import {
   Button,
   buttonVariants,
@@ -151,7 +152,7 @@ export const AccountSettings = () => {
               <FormItem>
                 <FormLabel>{t`Name`}</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input autoComplete="name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -165,7 +166,7 @@ export const AccountSettings = () => {
               <FormItem>
                 <FormLabel>{t`Username`}</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input autoComplete="username" className="lowercase" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -179,7 +180,7 @@ export const AccountSettings = () => {
               <FormItem>
                 <FormLabel>{t`Email`}</FormLabel>
                 <FormControl>
-                  <Input type="email" {...field} />
+                  <Input type="email" autoComplete="email" className="lowercase" {...field} />
                 </FormControl>
                 <FormDescription
                   className={cn(

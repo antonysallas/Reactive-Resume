@@ -8,7 +8,7 @@ msgstr ""
 "Language: ko\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-05-29 08:38\n"
+"PO-Revision-Date: 2025-02-03 09:13\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -20,13 +20,13 @@ msgstr ""
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:171
 msgid "You have enabled two-factor authentication successfully."
-msgstr "이중 인증을 성공적으로 활성화했습니다."
+msgstr "2단계 인증을 성공적으로 사용 설정했습니다."
 
 #: apps/client/src/pages/home/sections/features/index.tsx:57
 msgid "{templatesCount} resume templates to choose from"
 msgstr "{templatesCount} 선택할 수 있는 이력서 템플릿"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:141
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:142
 msgid "{value, plural, one {Column} other {Columns}}"
 msgstr "{value, plural, one {칼럼} other {칼럼}}"
 
@@ -38,7 +38,7 @@ msgstr "<0>저는 여가 시간에 다른 훌륭한 오픈소스 기여자들의
 msgid "<0>I'm sure the app is not perfect, but I'd like for it to be.</0><1>If you faced any issues while creating your resume, or have an idea that would help you and other users in creating your resume more easily, drop an issue on the repository or send me an email about it.</1>"
 msgstr "<0>앱이 완벽하지는 않겠지만, 앞으로 더 나아지기를 바랍니다.</0><1>이력서를 작성하는 동안 문제가 발생했거나 다른 사용자가 이력서를 더 쉽게 작성하는 데 도움이 될 만한 아이디어가 있다면 리포지토리에 문제를 등록하거나 저에게 이메일을 보내주세요.</1>"
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:126
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:201
 msgid "<0>Note: </0>By utilizing the OpenAI API, you acknowledge and accept the <1>terms of use</1> and <2>privacy policy</2> outlined by OpenAI. Please note that Reactive Resume bears no responsibility for any improper or unauthorized utilization of the service, and any resulting repercussions or liabilities solely rest on the user."
 msgstr "<0>참고: </0>OpenAI API를 이용함으로써 귀하는 OpenAI가 명시한 <1>이용약관</1> 및 <2>개인정보 보호정책을</2> 인정하고 이에 동의하는 것입니다. 리액티브 이력서는 서비스의 부적절하거나 무단 사용에 대해 어떠한 책임도 지지 않으며, 그로 인한 모든 영향이나 책임은 전적으로 사용자에게 있다는 점에 유의하시기 바랍니다."
 
@@ -46,11 +46,11 @@ msgstr "<0>참고: </0>OpenAI API를 이용함으로써 귀하는 OpenAI가 명�
 msgid "<0>The community has spent a lot of time writing the documentation for Reactive Resume, and I'm sure it will help you get started with the app.</0><1>There are also a lot of examples to help you get started, and features that you might not know about which could help you build your perfect resume.</1>"
 msgstr "<0>커뮤니티에서 반응형 이력서 문서를 작성하는 데 많은 시간을 투자했으며, 이 문서가 앱을 시작하는 데 도움이 될 것이라고 확신합니다.</0><1>또한 시작하는 데 도움이 되는 많은 예시와 완벽한 이력서를 만드는 데 도움이 될 수 있는 미처 몰랐던 기능도 많이 있습니다.</1>"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:146
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:140
 msgid "<0>Two-factor authentication is currently disabled.</0> You can enable it by adding an authenticator app to your account."
 msgstr "<0>현재 2단계 인증은 비활성화되어 있습니다.</0> 계정에 인증 앱을 추가하여 사용하도록 설정할 수 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:139
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:133
 msgid "<0>Two-factor authentication is enabled.</0> You will be asked to enter a code every time you sign in."
 msgstr "<0>2단계 인증이 활성화되었습니다.</0> 로그인할 때마다 코드를 입력하라는 메시지가 표시됩니다."
 
@@ -64,7 +64,7 @@ msgstr "무료, 오픈 소스 이력서 작성 도구"
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "이력서 작성, 업데이트 및 공유를 간단하게 할 수 있는 무료 오픈 소스 이력서 작성 도구입니다."
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:53
+#: apps/client/src/pages/builder/_components/toolbar.tsx:59
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:29
 msgid "A link has been copied to your clipboard."
 msgstr "링크가 클립보드에 복사되었습니다."
@@ -90,25 +90,25 @@ msgid "A4"
 msgstr "A4"
 
 #. Helper text to let the user know what filetypes are accepted. {accept} can be .pdf or .json.
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:272
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:270
 msgid "Accepts only {accept} files"
 msgstr "{accept} 파일만 허용됩니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:104
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:105
 msgid "Account"
 msgstr "계정"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:159
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:175
 msgid "Add a custom field"
 msgstr "사용자 지정 필드 추가"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-base.tsx:117
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-base.tsx:164
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-base.tsx:119
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-base.tsx:170
 msgctxt "For example, add a new work experience, or add a new profile."
 msgid "Add a new item"
 msgstr "새 항목 추가"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:90
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:91
 msgid "Add a new item"
 msgstr "새 항목 추가"
 
@@ -117,7 +117,7 @@ msgstr "새 항목 추가"
 msgid "Add a new section"
 msgstr "새 섹션 추가"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:271
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:261
 msgid "Add New Page"
 msgstr "새 페이지 추가"
 
@@ -129,9 +129,17 @@ msgstr "AI"
 msgid "Already have an account?"
 msgstr "이미 계정이 있으신가요?"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:146
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:144
 msgid "An error occurred while validating the file."
 msgstr "파일의 유효성을 검사하는 동안 오류가 발생했습니다."
+
+#: apps/client/src/pages/public/error.tsx:23
+msgid "An internal server error occurred."
+msgstr ""
+
+#: apps/client/src/pages/public/error.tsx:32
+msgid "An unexpected error occurred."
+msgstr ""
 
 #: apps/client/src/pages/home/sections/features/index.tsx:134
 msgid "and many more..."
@@ -141,20 +149,20 @@ msgstr "그 외 기타 등등!"
 msgid "Anyone with the link can view and download the resume."
 msgstr "링크가 있는 사람은 누구나 이력서를 보고 다운로드할 수 있습니다."
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:54
+#: apps/client/src/pages/builder/_components/toolbar.tsx:60
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:30
 msgid "Anyone with this link can view and download the resume. Share it on your profile or with recruiters."
 msgstr "이 링크가 있는 사람은 누구나 이력서를 보고 다운로드할 수 있습니다. 프로필이나 채용 담당자에 공유해 보세요."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:83
-msgid "API Key"
-msgstr "API Key"
+#: apps/client/src/pages/builder/sidebars/right/sections/css.tsx:41
+msgid "Apply Custom CSS"
+msgstr "사용자 지정 CSS 적용"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:124
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:128
 msgid "Are you sure you want to delete this item?"
 msgstr "이 항목을 삭제하시겠습니까?"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:147
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:149
 msgid "Are you sure you want to delete your resume?"
 msgstr "이력서를 삭제하시겠습니까?"
 
@@ -179,7 +187,7 @@ msgstr "확실한가요?"
 msgid "Area of Study"
 msgstr "연구분야"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:84
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:79
 msgid "Aspect Ratio"
 msgstr "가로세로 비율"
 
@@ -191,7 +199,7 @@ msgstr "{languagesCount} 언어 제공"
 msgid "Awarder"
 msgstr "수상자"
 
-#: apps/client/src/pages/auth/backup-otp/page.tsx:98
+#: apps/client/src/pages/auth/backup-otp/page.tsx:99
 #: apps/client/src/pages/auth/forgot-password/page.tsx:100
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:243
 msgid "Back"
@@ -205,9 +213,13 @@ msgstr "배경 색상"
 msgid "Backup Code"
 msgstr "백업 코드"
 
-#: apps/client/src/pages/auth/backup-otp/page.tsx:80
+#: apps/client/src/pages/auth/backup-otp/page.tsx:81
 msgid "Backup Codes may contain only lowercase letters or numbers, and must be exactly 10 characters."
 msgstr "백업 코드는 소문자 또는 숫자만 포함할 수 있으며 정확히 10자여야 합니다."
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:132
+msgid "Base URL"
+msgstr "기본 URL"
 
 #: apps/client/src/pages/builder/sidebars/left/index.tsx:55
 msgctxt "The basics section of a resume consists of User's Picture, Full Name, Location etc."
@@ -218,15 +230,15 @@ msgstr "기본 사항"
 msgid "Basics"
 msgstr "기본 사항"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:194
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:191
 msgid "Border"
 msgstr "테두리"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:127
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:124
 msgid "Border Radius"
 msgstr "둥근모서리"
 
-#: apps/client/src/pages/public/page.tsx:92
+#: apps/client/src/pages/public/page.tsx:93
 msgid "Built with"
 msgstr "Built with"
 
@@ -235,9 +247,9 @@ msgstr "Built with"
 msgid "By the community, for the community."
 msgstr "By the community, for the community."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:131
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:135
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:49
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:154
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:156
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:137
 msgid "Cancel"
 msgstr "취소"
@@ -247,12 +259,12 @@ msgstr "취소"
 msgid "Casual"
 msgstr "캐주얼"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:112
+#: apps/client/src/pages/builder/_components/toolbar.tsx:130
 msgid "Center Artboard"
 msgstr "중앙 아트보드"
 
 #: apps/client/src/pages/auth/reset-password/page.tsx:99
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:121
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:115
 msgid "Change Password"
 msgstr "비밀번호 변경"
 
@@ -260,15 +272,15 @@ msgstr "비밀번호 변경"
 msgid "Change Tone"
 msgstr "톤 변경"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:184
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:186
 msgid "Changed your mind about the name? Give it a new one."
 msgstr "이름이 변경되었나요? 새 이름을 지어주세요."
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:69
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:70
 msgid "Check your email for the confirmation link to update your email address."
 msgstr "이메일에서 확인 링크를 확인하여 이메일 주소를 업데이트하세요."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:147
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:144
 msgid "Circle"
 msgstr "서클"
 
@@ -284,7 +296,7 @@ msgstr "코드"
 msgid "Code must be exactly 6 digits long."
 msgstr "코드는 정확히 6자리여야 합니다."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:135
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:136
 msgid "Columns"
 msgstr "열"
 
@@ -297,20 +309,16 @@ msgstr "회사"
 msgid "Confident"
 msgstr "자신감"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:98
-msgid "Confirm New Password"
-msgstr "새 비밀번호 확인"
-
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:234
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:246
 msgid "Continue"
 msgstr "계속하기"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:94
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:96
 msgid "Copy"
 msgstr "복사"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:146
+#: apps/client/src/pages/builder/_components/toolbar.tsx:164
 msgid "Copy Link to Resume"
 msgstr "이력서 링크 복사"
 
@@ -318,8 +326,8 @@ msgstr "이력서 링크 복사"
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:167
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:242
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:179
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:244
 msgid "Create"
 msgstr "만들기"
 
@@ -328,11 +336,11 @@ msgstr "만들기"
 msgid "Create a new account"
 msgstr "새 계정 만들기"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:155
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:163
 msgid "Create a new item"
 msgstr "새 항목 만들기"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:176
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:178
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/create-card.tsx:28
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/create-item.tsx:18
 msgid "Create a new resume"
@@ -343,15 +351,25 @@ msgctxt "This is a link to create a new account"
 msgid "Create one now"
 msgstr "지금 만들기"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:257
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:259
 msgid "Create Sample Resume"
 msgstr "샘플 이력서 만들기"
+
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:82
+msgid "Current Password"
+msgstr ""
+
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:93
+#: apps/client/src/pages/builder/sidebars/right/sections/css.tsx:27
+#: apps/client/src/pages/builder/sidebars/right/sections/css.tsx:28
+msgid "Custom CSS"
+msgstr "사용자 정의 CSS"
 
 #: apps/client/src/pages/home/sections/features/index.tsx:62
 msgid "Custom resume sections"
 msgstr "사용자 지정 이력서 섹션"
 
-#: apps/client/src/stores/resume.ts:45
+#: apps/client/src/stores/resume.ts:47
 msgid "Custom Section"
 msgstr "사용자 지정 섹션"
 
@@ -377,19 +395,19 @@ msgstr "Dark"
 msgid "Date"
 msgstr "날짜"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:86
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:87
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:110
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:72
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:80
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:101
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:67
 msgid "Date or Date Range"
 msgstr "날짜 또는 날짜 범위"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:133
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:156
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:148
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:134
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:198
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:137
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:158
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:121
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:127
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:172
 msgid "Delete"
 msgstr "삭제"
 
@@ -398,9 +416,9 @@ msgstr "삭제"
 msgid "Delete Account"
 msgstr "계정 삭제"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:72
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:73
 #: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:50
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:66
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:87
 #: apps/client/src/pages/builder/sidebars/left/dialogs/references.tsx:53
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:63
 msgid "Description"
@@ -414,14 +432,14 @@ msgstr "단일/다중 페이지 이력서 디자인"
 msgid "Disable"
 msgstr "비활성화"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:160
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:154
 msgid "Disable 2FA"
 msgstr "2FA 비활성화"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:304
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:219
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:302
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:220
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:134
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:124
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:118
 msgid "Discard"
 msgstr "폐기"
 
@@ -453,8 +471,7 @@ msgstr "이력서의 JSON 스냅샷을 다운로드하세요. 이 파일은 나�
 msgid "Download a PDF of your resume. This file can be used to print your resume, send it to recruiters, or upload on job portals."
 msgstr "이력서 PDF를 다운로드하세요. 이 파일은 이력서를 인쇄하거나 채용 담당자에게 보내거나 취업 포털에 업로드하는 데 사용할 수 있습니다."
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:158
-#: apps/client/src/pages/public/page.tsx:104
+#: apps/client/src/pages/builder/_components/toolbar.tsx:176
 msgid "Download PDF"
 msgstr "PDF 다운로드"
 
@@ -462,39 +479,39 @@ msgstr "PDF 다운로드"
 msgid "Downloads"
 msgstr "다운로드"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:169
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:244
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:132
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:102
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:182
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:181
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:246
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:105
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:95
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:156
 msgid "Duplicate"
 msgstr "복제"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:157
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:165
 msgid "Duplicate an existing item"
 msgstr "기존 항목 복제"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:178
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:180
 msgid "Duplicate an existing resume"
 msgstr "기존 이력서 복제"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:90
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:92
 msgid "Edit"
 msgstr "수정"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:172
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:169
 msgid "Effects"
 msgstr "효과"
 
 #: apps/client/src/pages/auth/forgot-password/page.tsx:82
 #: apps/client/src/pages/auth/login/page.tsx:90
-#: apps/client/src/pages/auth/register/page.tsx:140
+#: apps/client/src/pages/auth/register/page.tsx:141
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:54
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:180
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:181
 msgid "Email"
 msgstr "이메일"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:169
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:163
 msgid "Enable 2FA"
 msgstr "2단계 인증 활성화"
 
@@ -508,7 +525,7 @@ msgstr "이중 인증을 활성화할 때 저장한 10개의 백업 코드 중 �
 
 #: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:63
 msgid "Enter Phosphor Icon"
-msgstr ""
+msgstr "형광체 아이콘 입력"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:170
 msgid "Enter the 6-digit code from your authenticator app to verify that 2FA has been setup correctly."
@@ -522,7 +539,11 @@ msgstr "인증 앱에서 제공한 일회용 비밀번호를 아래에 입력합
 msgid "Enter your email address and we will send you a link to reset your password if the account exists."
 msgstr "이메일 주소를 입력하시면 계정이 존재하는 경우 비밀번호를 재설정할 수 있는 링크를 보내드립니다."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:285
+#: apps/client/src/pages/public/error.tsx:46
+msgid "Error {statusCode}"
+msgstr ""
+
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:283
 msgid "Errors"
 msgstr "오류"
 
@@ -534,16 +555,17 @@ msgstr "재정적으로 기여하지 않으셔도 GitHub 저장소에 별점을 
 msgid "Explore the templates available in Reactive Resume and view the resumes crafted with them. They could also serve as examples to help guide the creation of your next resume."
 msgstr "Reactive Resume 에서 사용할 수 있는 템플릿을 살펴보고 이 템플릿으로 만든 이력서를 확인하세요. 다음 이력서를 작성할 때 참고할 수 있는 예시로도 사용할 수 있습니다."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:111
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:121
+#: apps/client/src/pages/builder/sidebars/right/sections/export.tsx:39
 #: apps/client/src/pages/builder/sidebars/right/sections/export.tsx:40
 msgid "Export"
 msgstr "내보내기"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:257
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:255
 msgid "File"
 msgstr "파일"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:223
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:221
 msgid "Filetype"
 msgstr "파일 유형"
 
@@ -555,19 +577,19 @@ msgstr "마지막으로,"
 msgid "Fix Spelling & Grammar"
 msgstr "맞춤법 및 문법 수정"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:93
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:107
 msgid "Font Family"
 msgstr "글꼴"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:134
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:148
 msgid "Font Size"
 msgstr "글자 크기"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:108
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:122
 msgid "Font Subset"
 msgstr "글꼴 하위 집합"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:120
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:134
 msgid "Font Variants"
 msgstr "글꼴 변형"
 
@@ -575,11 +597,11 @@ msgstr "글꼴 변형"
 msgid "For example, information regarding which companies you sent this resume to or the links to the job descriptions can be noted down here."
 msgstr "예를 들어, 이력서를 보낸 회사에 대한 정보나 직무 설명에 대한 링크를 여기에 기록할 수 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:107
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:182
 msgid "Forget"
 msgstr "잊어버림"
 
-#: apps/client/src/pages/auth/login/page.tsx:126
+#: apps/client/src/pages/auth/login/page.tsx:131
 msgid "Forgot Password?"
 msgstr "비밀번호를 잊으셨나요?"
 
@@ -609,7 +631,7 @@ msgstr "친절함"
 msgid "Full Name"
 msgstr "전체 이름"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:200
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:202
 msgid "Generate a random title for your resume"
 msgstr "이력서에 사용할 임의의 제목 생성"
 
@@ -625,7 +647,7 @@ msgstr "GitHub"
 msgid "GitHub Stars"
 msgstr "GitHub 스타"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:185
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:187
 msgid "Give your old resume a new name."
 msgstr "기존 이력서에 새 이름을 부여하세요."
 
@@ -634,11 +656,15 @@ msgstr "기존 이력서에 새 이름을 부여하세요."
 msgid "Go to Dashboard"
 msgstr "대시보드로 이동"
 
+#: apps/client/src/pages/public/error.tsx:55
+msgid "Go to home"
+msgstr ""
+
 #: apps/client/src/pages/auth/_components/social-auth.tsx:31
 msgid "Google"
 msgstr "Google"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:205
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:202
 msgid "Grayscale"
 msgstr "그레이 스케일"
 
@@ -650,7 +676,7 @@ msgstr "그리드"
 msgid "Headline"
 msgstr "헤드라인"
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:106
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:107
 msgid "Here, you can update your account information such as your profile picture, name and username."
 msgstr "여기에서 프로필 사진, 이름, 사용자 아이디 등의 계정 정보를 업데이트할 수 있습니다."
 
@@ -658,27 +684,27 @@ msgstr "여기에서 프로필 사진, 이름, 사용자 아이디 등의 계정
 msgid "Here, you can update your profile to customize and personalize your experience."
 msgstr "여기에서 프로필을 업데이트하여 사용자 환경을 맞춤 설정하고 개인화할 수 있습니다."
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:78
-#: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:92
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:183
+#: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:80
+#: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:94
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:180
 msgid "Hidden"
 msgstr "숨겨진"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:105
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:106
 msgid "Hide"
 msgstr "숨기기"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:178
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:192
 msgid "Hide Icons"
 msgstr "아이콘 숨기기"
 
-#: apps/client/src/pages/auth/login/page.tsx:110
-#: apps/client/src/pages/auth/register/page.tsx:166
+#: apps/client/src/pages/auth/login/page.tsx:115
+#: apps/client/src/pages/auth/register/page.tsx:168
 #: apps/client/src/pages/auth/reset-password/page.tsx:88
 msgid "Hold <0>Ctrl</0> to display your password temporarily."
 msgstr "비밀번호를 일시적으로 표시하려면 <0>Ctrl</0> 키를 누르고 있습니다."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:98
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:93
 msgid "Horizontal"
 msgstr "수평"
 
@@ -690,7 +716,7 @@ msgstr "이력서를 공개적으로 호스팅하세요"
 msgid "I always love to hear from the users of Reactive Resume with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <0>{email}</0>."
 msgstr "저는 항상 반응형 이력서 사용자들로부터 피드백이나 지원을 받는 것을 좋아합니다. 다음은 제가 받은 메시지 중 일부입니다. 피드백이 있으시면 언제든지 다음 주소로 이메일을 보내주세요. <0>{email}</0>."
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:94
+#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:83
 #: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:53
 msgid "Icon"
 msgstr "아이콘"
@@ -707,11 +733,11 @@ msgstr "2단계 인증을 비활성화하면 로그인할 때 더 이상 인증 
 msgid "If you're multilingual, we'd love your help in bringing the app to more languages and communities. Don't worry if you don't see your language on the list - just give me a shout-out on GitHub, and I'll make sure to include it. Ready to get started? Jump into translation over at Crowdin by clicking the link below."
 msgstr "다국어를 사용하는 경우 더 많은 언어와 커뮤니티에 앱을 제공할 수 있도록 도와주시면 감사하겠습니다. 목록에 귀하의 언어가 없더라도 걱정하지 마시고 GitHub에 알려주시면 포함할 수 있도록 하겠습니다. 시작할 준비가 되셨나요? 아래 링크를 클릭하여 Crowdin에서 번역을 시작하세요."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:311
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:309
 msgid "Import"
 msgstr "가져오기"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:210
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:208
 #: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/import-card.tsx:28
 #: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/import-item.tsx:17
 msgid "Import an existing resume"
@@ -725,7 +751,7 @@ msgstr "글쓰기 향상"
 msgid "In case you are unable to scan this QR Code, you can also copy-paste this link into your authenticator app."
 msgstr "이 QR 코드를 스캔할 수 없는 경우, 이 링크를 복사하여 인증 앱에 붙여넣을 수도 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:70
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:67
 msgid "In this section, you can change your password and enable/disable two-factor authentication."
 msgstr "이 섹션에서는 비밀번호를 변경하고 2단계 인증을 활성화/비활성화할 수 있습니다."
 
@@ -733,7 +759,8 @@ msgstr "이 섹션에서는 비밀번호를 변경하고 2단계 인증을 활�
 msgid "In this section, you can delete your account and all the data associated to your user, but please keep in mind that <0>this action is irreversible</0>."
 msgstr "이 섹션에서는 계정 및 사용자와 관련된 모든 데이터를 삭제할 수 있지만, <0>이 작업은 되돌릴 수</0> 없다는 점에 유의하세요."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:125
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:135
+#: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:116
 #: apps/client/src/pages/builder/sidebars/right/sections/information.tsx:117
 msgid "Information"
 msgstr "정보"
@@ -779,12 +806,12 @@ msgctxt "Localized version of a placeholder name. For example, Max Mustermann in
 msgid "John Doe"
 msgstr "신원 미상"
 
-#: apps/client/src/pages/auth/register/page.tsx:122
+#: apps/client/src/pages/auth/register/page.tsx:123
 msgctxt "Localized version of a placeholder username. For example, max.mustermann in German or jan.kowalski in Polish."
 msgid "john.doe"
 msgstr "john.doe"
 
-#: apps/client/src/pages/auth/register/page.tsx:143
+#: apps/client/src/pages/auth/register/page.tsx:145
 msgctxt "Localized version of a placeholder email. For example, max.mustermann@example.de in German or jan.kowalski@example.pl in Polish."
 msgid "john.doe@example.com"
 msgstr "john.doe@example.com"
@@ -793,15 +820,15 @@ msgstr "john.doe@example.com"
 msgid "JSON"
 msgstr "JSON"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:152
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:159
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:63
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:132
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:159
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:109
 msgid "Keywords"
 msgstr "키워드"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:41
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:51
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:42
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:52
 msgid "Label"
 msgstr "라벨"
 
@@ -809,13 +836,14 @@ msgstr "라벨"
 msgid "Language"
 msgstr "언어"
 
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:116
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:148
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:83
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:139
 msgid "Last updated {lastUpdated}"
 msgstr "마지막 업데이트 {lastUpdated}"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:69
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:207
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:72
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:197
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:198
 msgid "Layout"
 msgstr "레이아웃"
 
@@ -844,7 +872,7 @@ msgstr "빛"
 msgid "Light or dark theme"
 msgstr "밝거나 어두운 테마"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:151
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:165
 msgid "Line Height"
 msgstr "선 높이"
 
@@ -857,7 +885,7 @@ msgstr "LinkedIn, JSON 이력서 등"
 msgid "List"
 msgstr "목록"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:100
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:101
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:86
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:81
 #: apps/client/src/pages/builder/sidebars/left/sections/basics.tsx:93
@@ -865,9 +893,9 @@ msgid "Location"
 msgstr "위치"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:51
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:142
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:122
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:192
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:115
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:115
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:166
 msgid "Lock"
 msgstr "잠금"
 
@@ -888,7 +916,7 @@ msgstr "로그아웃"
 msgid "Lost your device?"
 msgstr "기기를 분실하셨나요?"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:257
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:247
 msgid "Main"
 msgstr "메인"
 
@@ -905,7 +933,7 @@ msgstr "2023년 3월"
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:112
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:74
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:82
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:103
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:69
 msgid "March 2023 - Present"
 msgstr "2023년 3월 - 현재"
@@ -914,20 +942,28 @@ msgstr "2023년 3월 - 현재"
 msgid "Margin"
 msgstr "마진"
 
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:158
+msgid "Max Tokens"
+msgstr "최대 토큰"
+
 #: apps/client/src/pages/home/sections/features/index.tsx:48
 msgid "MIT License"
 msgstr "MIT 라이선스"
 
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:145
+msgid "Model"
+msgstr "모델"
+
 #: apps/client/src/pages/auth/register/page.tsx:98
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:58
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:59
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:48
 #: apps/client/src/pages/builder/sidebars/left/dialogs/languages.tsx:36
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:52
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:73
 #: apps/client/src/pages/builder/sidebars/left/dialogs/publications.tsx:39
 #: apps/client/src/pages/builder/sidebars/left/dialogs/references.tsx:39
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:49
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:72
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:152
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:88
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:153
 msgid "Name"
 msgstr "이름"
 
@@ -936,11 +972,11 @@ msgctxt "Name of the Certification"
 msgid "Name"
 msgstr "이름"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:51
+#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:40
 msgid "Network"
 msgstr "네트워크"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:85
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:96
 msgid "New Password"
 msgstr "새 비밀번호"
 
@@ -956,7 +992,8 @@ msgstr "사용자 추적 또는 광고 없음"
 msgid "Note: This will make your account less secure."
 msgstr "참고: 이렇게 하면 계정의 보안이 약해집니다."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:118
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:128
+#: apps/client/src/pages/builder/sidebars/right/sections/notes.tsx:16
 #: apps/client/src/pages/builder/sidebars/right/sections/notes.tsx:17
 msgid "Notes"
 msgstr "참고"
@@ -966,15 +1003,15 @@ msgid "One-Time Password"
 msgstr "일회용 비밀번호"
 
 #: apps/client/src/components/ai-actions.tsx:56
-#: apps/client/src/libs/axios.ts:29
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:190
+#: apps/client/src/libs/axios.ts:30
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:188
 #: apps/client/src/services/resume/print.tsx:26
 msgid "Oops, the server returned an error."
 msgstr "서버에서 오류를 반환했습니다."
 
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:124
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:84
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:174
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:97
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:77
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:148
 msgid "Open"
 msgstr "열기"
 
@@ -982,19 +1019,26 @@ msgstr "열기"
 msgid "Open Source"
 msgstr "오픈 소스"
 
-#: apps/client/src/services/openai/change-tone.ts:30
-#: apps/client/src/services/openai/fix-grammar.ts:28
-#: apps/client/src/services/openai/improve-writing.ts:28
+#: apps/client/src/services/openai/change-tone.ts:35
+#: apps/client/src/services/openai/fix-grammar.ts:33
+#: apps/client/src/services/openai/improve-writing.ts:33
 msgid "OpenAI did not return any choices for your text."
 msgstr "OpenAI가 텍스트에 대한 선택 항목을 반환하지 않았습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:52
 #: apps/client/src/pages/home/sections/features/index.tsx:52
 msgid "OpenAI Integration"
 msgstr "OpenAI 통합"
 
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:119
+msgid "OpenAI/Ollama API Key"
+msgstr "OpenAI/올라마 API 키"
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:79
+msgid "OpenAI/Ollama Integration"
+msgstr "OpenAI/올라마 통합"
+
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:67
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:168
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:182
 msgid "Options"
 msgstr "옵션"
 
@@ -1007,19 +1051,20 @@ msgstr "또는"
 msgid "Organization"
 msgstr "조직"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:90
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:100
+#: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:25
 #: apps/client/src/pages/builder/sidebars/right/sections/page.tsx:26
 msgid "Page"
 msgstr "페이지"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:237
-msgid "Page {0}"
-msgstr "페이지 {0}"
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:228
+msgid "Page {pageNumber}"
+msgstr "페이지 {pageNumber}"
 
-#: apps/client/src/pages/auth/login/page.tsx:105
-#: apps/client/src/pages/auth/register/page.tsx:161
+#: apps/client/src/pages/auth/login/page.tsx:110
+#: apps/client/src/pages/auth/register/page.tsx:163
 #: apps/client/src/pages/auth/reset-password/page.tsx:83
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:76
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:73
 msgid "Password"
 msgstr "비밀번호"
 
@@ -1044,7 +1089,7 @@ msgid "Pick any font from Google Fonts"
 msgstr "Google 글꼴에서 글꼴을 선택하세요."
 
 #: apps/client/src/pages/builder/sidebars/left/sections/picture/section.tsx:69
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:120
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:121
 msgid "Picture"
 msgstr "사진"
 
@@ -1052,7 +1097,7 @@ msgstr "사진"
 msgid "Please note that this step is completely optional."
 msgstr "이 단계는 완전히 선택 사항이라는 점에 유의하세요."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:227
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:225
 msgid "Please select a file type"
 msgstr "파일 유형을 선택하세요."
 
@@ -1060,7 +1105,7 @@ msgstr "파일 유형을 선택하세요."
 msgid "Please store your backup codes in a secure location. You can use one of these one-time use codes to login in case you lose access to your authenticator app."
 msgstr "백업 코드를 안전한 곳에 보관하세요. 인증 앱에 액세스할 수 없는 경우 이 일회용 코드 중 하나를 사용하여 로그인할 수 있습니다."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:104
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:99
 msgid "Portrait"
 msgstr "초상화"
 
@@ -1077,7 +1122,7 @@ msgstr "위치"
 msgid "Powered by"
 msgstr "제공"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:113
+#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:94
 msgid "Powered by <0>Simple Icons</0>"
 msgstr "<0>간단한 아이콘으로</0> 구동"
 
@@ -1086,8 +1131,6 @@ msgid "Primary Color"
 msgstr "기본 색상"
 
 #: apps/client/src/pages/home/components/footer.tsx:50
-#: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
-#: apps/client/src/pages/home/meta/privacy-policy/page.tsx:23
 msgid "Privacy Policy"
 msgstr "개인정보 보호정책"
 
@@ -1120,14 +1163,13 @@ msgstr "문제 제기"
 #: apps/client/src/pages/auth/reset-password/page.tsx:60
 #: apps/client/src/pages/auth/verify-email/page.tsx:43
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
-#: apps/client/src/pages/builder/page.tsx:43
+#: apps/client/src/pages/builder/page.tsx:60
 #: apps/client/src/pages/dashboard/resumes/page.tsx:20
 #: apps/client/src/pages/dashboard/settings/page.tsx:16
 #: apps/client/src/pages/home/components/footer.tsx:18
-#: apps/client/src/pages/home/meta/privacy-policy/page.tsx:10
 #: apps/client/src/pages/home/page.tsx:24
-#: apps/client/src/pages/public/page.tsx:73
-#: apps/client/src/pages/public/page.tsx:94
+#: apps/client/src/pages/public/page.tsx:74
+#: apps/client/src/pages/public/page.tsx:95
 msgid "Reactive Resume"
 msgstr "반응형 이력서"
 
@@ -1147,35 +1189,35 @@ msgstr "반응형 이력서는 3년이 넘는 기간 동안의 노력으로 완�
 msgid "Reactive Resume thrives thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills. Below, we celebrate the coders who've enhanced its features on GitHub and the linguists whose translations on Crowdin have made it accessible to a broader audience."
 msgstr "리액티브 이력서는 활기찬 커뮤니티 덕분에 번창하고 있습니다. 이 프로젝트가 발전할 수 있었던 것은 시간과 기술을 기부해 주신 수많은 분들 덕분입니다. 아래에서는 GitHub에서 기능을 개선한 코더와 Crowdin에서 번역을 통해 더 많은 사람들이 이용할 수 있게 해준 언어학자들을 축하합니다."
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:79
+#: apps/client/src/pages/builder/_components/toolbar.tsx:89
 msgid "Redo"
 msgstr "다시 실행"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:98
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:156
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:100
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:157
 msgid "Remove"
 msgstr "제거"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:241
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:231
 msgid "Remove Page"
 msgstr "페이지 제거"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:110
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:128
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:93
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:178
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:111
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:101
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:86
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:152
 msgid "Rename"
 msgstr "이름 바꾸기"
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:198
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:199
 msgid "Resend email confirmation link"
 msgstr "이메일 확인 링크 다시 보내기"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:151
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:152
 msgid "Reset"
 msgstr "초기화"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:210
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:201
 msgid "Reset Layout"
 msgstr "레이아웃 재설정"
 
@@ -1184,7 +1226,7 @@ msgstr "레이아웃 재설정"
 msgid "Reset your password"
 msgstr "비밀번호 재설정"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:106
+#: apps/client/src/pages/builder/_components/toolbar.tsx:124
 msgid "Reset Zoom"
 msgstr "줌 초기화"
 
@@ -1202,16 +1244,24 @@ msgstr "이력서 생성"
 msgid "Rich in features, not in pricing."
 msgstr "가격이 아닌 기능이 풍부합니다."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:141
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:138
 msgid "Rounded"
 msgstr "둥근"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:168
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:243
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:216
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:180
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:245
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:217
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:131
 msgid "Save Changes"
 msgstr "변경 사항 저장"
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:176
+msgid "Save Locally"
+msgstr "로컬에 저장"
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:176
+msgid "Saved"
+msgstr "저장됨"
 
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:168
 msgid "Scan the QR code below with your authenticator app to setup 2FA on your account."
@@ -1222,15 +1272,23 @@ msgstr "인증 앱으로 아래 QR 코드를 스캔하여 계정에 2FA를 설�
 msgid "Score"
 msgstr "점수"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:97
+#: apps/client/src/pages/builder/_components/toolbar.tsx:104
+msgid "Scroll to Pan"
+msgstr "팬으로 스크롤"
+
+#: apps/client/src/pages/builder/_components/toolbar.tsx:104
+msgid "Scroll to Zoom"
+msgstr "줌으로 스크롤"
+
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:111
 msgid "Search for a font family"
 msgstr "글꼴 패밀리 검색"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:112
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:126
 msgid "Search for a font subset"
 msgstr "글꼴 하위 집합 검색"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:125
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:139
 msgid "Search for a font variant"
 msgstr "글꼴 변형 검색"
 
@@ -1242,7 +1300,7 @@ msgstr "언어 검색"
 msgid "Secure with two-factor authentication"
 msgstr "2단계 인증으로 보안 유지"
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:68
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:65
 msgid "Security"
 msgstr "보안"
 
@@ -1258,9 +1316,9 @@ msgstr "이메일 보내기"
 msgid "Send me a message"
 msgstr "메시지 보내기"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:96
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:97
 msgid "Separate Links"
-msgstr ""
+msgstr "별도의 링크"
 
 #: apps/client/src/components/user-options.tsx:32
 #: apps/client/src/pages/dashboard/_components/sidebar.tsx:92
@@ -1273,12 +1331,13 @@ msgstr "설정"
 msgid "Setup two-factor authentication on your account"
 msgstr "계정에 2단계 인증 설정하기"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:97
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:107
+#: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:38
 #: apps/client/src/pages/builder/sidebars/right/sections/sharing.tsx:39
 msgid "Sharing"
 msgstr "공유"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:105
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-options.tsx:106
 msgid "Show"
 msgstr "표시"
 
@@ -1290,12 +1349,12 @@ msgstr "나누기 줄 표시"
 msgid "Show Page Numbers"
 msgstr "페이지 번호 표시"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:258
+#: apps/client/src/pages/builder/sidebars/right/sections/layout.tsx:248
 msgid "Sidebar"
 msgstr "사이드바"
 
-#: apps/client/src/pages/auth/backup-otp/page.tsx:102
-#: apps/client/src/pages/auth/login/page.tsx:122
+#: apps/client/src/pages/auth/backup-otp/page.tsx:103
+#: apps/client/src/pages/auth/login/page.tsx:127
 #: apps/client/src/pages/auth/verify-otp/page.tsx:92
 msgid "Sign in"
 msgstr "로그인"
@@ -1321,23 +1380,23 @@ msgstr "GitHub로 로그인"
 msgid "Sign in with Google"
 msgstr "Google로 로그인"
 
-#: apps/client/src/pages/auth/register/page.tsx:177
+#: apps/client/src/pages/auth/register/page.tsx:179
 msgid "Sign up"
 msgstr "가입하기"
 
 #: apps/client/src/pages/auth/login/page.tsx:74
 msgid "Signing in via email is currently disabled by the administrator."
-msgstr ""
+msgstr "이메일을 통한 로그인은 현재 관리자에 의해 비활성화되어 있습니다."
 
 #: apps/client/src/pages/auth/register/page.tsx:82
 msgid "Signups are currently disabled by the administrator."
 msgstr "현재 관리자에 의해 가입이 비활성화되어 있습니다."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:70
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:65
 msgid "Size (in px)"
 msgstr "크기(픽셀 단위)"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:226
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:228
 msgid "Slug"
 msgstr "슬러그"
 
@@ -1353,8 +1412,8 @@ msgstr "이력서를 인쇄하는 동안 문제가 발생했습니다. 나중에
 msgid "Something went wrong while processing your request. Please try again later or raise an issue on GitHub."
 msgstr "요청을 처리하는 동안 문제가 발생했습니다. 나중에 다시 시도하거나 GitHub에서 문제를 제기하세요."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:92
-#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:135
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:87
+#: apps/client/src/pages/builder/sidebars/left/sections/picture/options.tsx:132
 msgid "Square"
 msgstr "스퀘어"
 
@@ -1363,11 +1422,12 @@ msgstr "스퀘어"
 msgid "Start building from scratch"
 msgstr "처음부터 빌드 시작"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:183
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:185
 msgid "Start building your resume by giving it a name."
 msgstr "이름을 지정하여 이력서 작성을 시작하세요."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:104
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:114
+#: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:22
 #: apps/client/src/pages/builder/sidebars/right/sections/statistics.tsx:23
 msgid "Statistics"
 msgstr "통계"
@@ -1376,24 +1436,16 @@ msgstr "통계"
 msgid "Statistics are available only for public resumes."
 msgstr "통계는 공개 이력서에 대해서만 사용할 수 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:101
-msgid "Store Locally"
-msgstr "로컬 스토어"
-
 #: apps/client/src/pages/dashboard/settings/_dialogs/two-factor.tsx:162
 msgid "Store your backup codes securely"
 msgstr "백업 코드를 안전하게 저장"
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:101
-msgid "Stored"
-msgstr "저장됨"
-
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:101
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:95
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:128
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:129
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:138
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:114
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:108
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:129
 #: apps/client/src/pages/builder/sidebars/left/dialogs/publications.tsx:95
 #: apps/client/src/pages/builder/sidebars/left/dialogs/references.tsx:81
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:109
@@ -1416,7 +1468,8 @@ msgstr "A4/레터 페이지 형식 지원"
 msgid "System"
 msgstr "시스템"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:62
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:65
+#: apps/client/src/pages/builder/sidebars/right/sections/template.tsx:18
 #: apps/client/src/pages/builder/sidebars/right/sections/template.tsx:19
 msgid "Template"
 msgstr "템플릿"
@@ -1433,19 +1486,20 @@ msgstr "사용 후기"
 msgid "Text Color"
 msgstr "텍스트 색상"
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:25
-msgid "That doesn't look like a valid OpenAI API key."
-msgstr "유효한 OpenAI API 키가 아닌 것 같습니다."
+#: apps/client/src/pages/public/error.tsx:17
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:34
-msgid "The passwords you entered do not match."
-msgstr "입력한 비밀번호가 일치하지 않습니다."
+#: apps/client/src/pages/public/error.tsx:29
+msgid "The request was invalid."
+msgstr ""
 
 #: apps/client/src/services/errors/translate-error.ts:49
 msgid "The resume you want to update is locked, please unlock if you wish to make any changes to it."
 msgstr "업데이트하려는 이력서가 잠겨 있으므로 변경하려면 잠금을 해제하세요."
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:83
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:86
+#: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:19
 #: apps/client/src/pages/builder/sidebars/right/sections/theme.tsx:20
 #: apps/client/src/pages/dashboard/settings/_sections/profile.tsx:79
 msgid "Theme"
@@ -1455,11 +1509,11 @@ msgstr "테마"
 msgid "There was an error connecting to the browser. Please make sure 'chrome' is running and reachable."
 msgstr "브라우저에 연결하는 동안 오류가 발생했습니다. '크롬'이 실행 중이고 연결 가능한 상태인지 확인하세요."
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:126
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:130
 msgid "This action can be reverted by clicking on the undo button in the floating toolbar."
 msgstr "플로팅 툴바에서 실행 취소 버튼을 클릭하면 이 작업을 되돌릴 수 있습니다."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:149
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:151
 msgid "This action cannot be undone. This will permanently delete your resume and cannot be recovered."
 msgstr "이 작업은 취소할 수 없습니다. 이렇게 하면 이력서가 영구적으로 삭제되며 복구할 수 없습니다."
 
@@ -1475,7 +1529,7 @@ msgstr "이 이력서는 잠겨 있으므로 추가 변경을 하려면 잠금�
 msgid "This section is reserved for your personal notes specific to this resume. The content here remains private and is not shared with anyone else."
 msgstr "이 섹션은 이 이력서와 관련된 개인 메모를 위해 마련된 공간입니다. 여기에 있는 콘텐츠는 비공개로 유지되며 다른 사람과 공유되지 않습니다."
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:214
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:216
 msgid "Tip: You can name the resume referring to the position you are applying for."
 msgstr "팁: 이력서 이름에 지원하는 직책을 언급하는 이름을 붙일 수 있습니다."
 
@@ -1484,15 +1538,15 @@ msgctxt "Name of the Award"
 msgid "Title"
 msgstr "제목"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:194
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:196
 msgid "Title"
 msgstr "제목"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:120
+#: apps/client/src/pages/builder/_components/toolbar.tsx:138
 msgid "Toggle Page Break Line"
 msgstr "페이지 나누기 줄 전환"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:132
+#: apps/client/src/pages/builder/_components/toolbar.tsx:150
 msgid "Toggle Page Numbers"
 msgstr "페이지 번호 토글"
 
@@ -1502,7 +1556,7 @@ msgstr "조회수 및 다운로드 추적"
 
 #: apps/client/src/pages/auth/verify-otp/page.tsx:52
 #: apps/client/src/pages/auth/verify-otp/page.tsx:57
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:135
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:129
 msgid "Two-Factor Authentication"
 msgstr "2단계 인증"
 
@@ -1523,23 +1577,24 @@ msgstr "<0>삭제를</0> 입력하여 계정 삭제를 확인합니다."
 msgid "Type of Study"
 msgstr "학습 유형"
 
-#: apps/client/src/pages/builder/sidebars/right/index.tsx:76
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:65
+#: apps/client/src/pages/builder/sidebars/right/index.tsx:79
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:76
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:77
 msgid "Typography"
 msgstr "타이포그래피"
 
-#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:189
+#: apps/client/src/pages/builder/sidebars/right/sections/typography.tsx:203
 msgid "Underline Links"
 msgstr "밑줄 링크"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:66
+#: apps/client/src/pages/builder/_components/toolbar.tsx:76
 msgid "Undo"
 msgstr "실행 취소"
 
 #: apps/client/src/pages/dashboard/resumes/_dialogs/lock.tsx:52
-#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:137
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:112
-#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:187
+#: apps/client/src/pages/dashboard/resumes/_layouts/grid/_components/resume-card.tsx:110
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:105
+#: apps/client/src/pages/dashboard/resumes/_layouts/list/_components/resume-item.tsx:161
 msgid "Unlock"
 msgstr "잠금 해제"
 
@@ -1547,19 +1602,19 @@ msgstr "잠금 해제"
 msgid "Unlocking a resume will allow you to make changes to it again."
 msgstr "이력서를 잠금 해제하면 이력서를 다시 변경할 수 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:191
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:192
 msgid "Unverified"
 msgstr "확인되지 않음"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:156
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-dialog.tsx:164
 msgid "Update an existing item"
 msgstr "기존 항목 업데이트"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:177
+#: apps/client/src/pages/dashboard/resumes/_dialogs/resume.tsx:179
 msgid "Update an existing resume"
 msgstr "기존 이력서 업데이트"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:214
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:212
 msgid "Upload a file from one of the accepted sources to parse existing data and import it into Reactive Resume for easier editing."
 msgstr "허용된 소스 중 하나에서 파일을 업로드하여 기존 데이터를 구문 분석하고 이를 반응형 이력서로 가져와서 쉽게 편집할 수 있습니다."
 
@@ -1567,7 +1622,7 @@ msgstr "허용된 소스 중 하나에서 파일을 업로드하여 기존 데�
 msgid "URL"
 msgstr "URL"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:60
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/url-input.tsx:61
 msgid "URL must start with https://"
 msgstr "URL은 https:// 로 시작해야 합니다."
 
@@ -1581,8 +1636,8 @@ msgid "User does not have an associated 'secrets' record. Please report this iss
 msgstr "사용자에게 연결된 '비밀' 레코드가 없습니다. 이 문제는 GitHub에서 신고해 주세요."
 
 #: apps/client/src/pages/auth/register/page.tsx:119
-#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:66
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:166
+#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:55
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:167
 msgid "Username"
 msgstr "사용자 이름"
 
@@ -1590,19 +1645,19 @@ msgstr "사용자 이름"
 msgid "Users Signed Up"
 msgstr "가입한 사용자 수"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:298
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:296
 msgid "Validate"
 msgstr "유효성 검사"
 
-#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:316
+#: apps/client/src/pages/dashboard/resumes/_dialogs/import.tsx:314
 msgid "Validated"
 msgstr "유효성 검사"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:81
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:97
 msgid "Value"
 msgstr "가치"
 
-#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:191
+#: apps/client/src/pages/dashboard/settings/_sections/account.tsx:192
 msgid "Verified"
 msgstr "확인됨"
 
@@ -1623,9 +1678,13 @@ msgstr "버전 4"
 msgid "Views"
 msgstr "조회수"
 
-#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:86
+#: apps/client/src/pages/builder/sidebars/left/sections/shared/section-list-item.tsx:87
 msgid "Visible"
 msgstr "가시성"
+
+#: apps/client/src/pages/builder/sidebars/left/sections/custom/section.tsx:70
+msgid "Visit <0>Phosphor Icons</0> for a list of available icons"
+msgstr "사용 가능한 아이콘 목록을 보려면 <0>형광체 아이콘을</0> 방문하세요."
 
 #: apps/client/src/pages/auth/verify-email/page.tsx:61
 msgid "We verify your email address only to ensure that we can send you a password reset link in case you forget your password."
@@ -1633,11 +1692,11 @@ msgstr "비밀번호를 잊어버린 경우 비밀번호 재설정 링크를 보
 
 #: apps/client/src/pages/builder/sidebars/left/dialogs/awards.tsx:87
 #: apps/client/src/pages/builder/sidebars/left/dialogs/certifications.tsx:81
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:114
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:115
 #: apps/client/src/pages/builder/sidebars/left/dialogs/education.tsx:124
 #: apps/client/src/pages/builder/sidebars/left/dialogs/experience.tsx:100
-#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:80
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:94
+#: apps/client/src/pages/builder/sidebars/left/dialogs/profiles.tsx:69
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:115
 #: apps/client/src/pages/builder/sidebars/left/dialogs/publications.tsx:81
 #: apps/client/src/pages/builder/sidebars/left/dialogs/references.tsx:67
 #: apps/client/src/pages/builder/sidebars/left/dialogs/volunteer.tsx:95
@@ -1649,18 +1708,26 @@ msgstr "웹사이트"
 msgid "What's new in the latest version"
 msgstr "최신 버전의 새로운 기능"
 
-#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:157
+#: apps/client/src/pages/public/error.tsx:26
+msgid "You are not authorized to access this page."
+msgstr ""
+
+#: apps/client/src/pages/builder/sidebars/left/dialogs/custom-section.tsx:164
 #: apps/client/src/pages/builder/sidebars/left/dialogs/interests.tsx:68
-#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:137
+#: apps/client/src/pages/builder/sidebars/left/dialogs/projects.tsx:164
 #: apps/client/src/pages/builder/sidebars/left/dialogs/skills.tsx:114
 msgid "You can add multiple keywords by separating them with a comma or pressing enter."
 msgstr "쉼표로 구분하거나 Enter 키를 눌러 여러 개의 키워드를 추가할 수 있습니다."
 
-#: apps/client/src/pages/auth/login/page.tsx:94
+#: apps/client/src/pages/auth/login/page.tsx:99
 msgid "You can also enter your username."
 msgstr "사용자 아이디를 입력할 수도 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:54
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:103
+msgid "You can also integrate with Ollama simply by setting the API key to `sk-1234567890abcdef` and the Base URL to your Ollama URL, i.e. `http://localhost:11434/v1`. You can also pick and choose models and set the max tokens as per your preference."
+msgstr "API 키를 `sk-1234567890abcdef`로 설정하고 기본 URL을 `http://localhost:11434/v1`과 같은 Ollama URL로 설정하여 Ollama와 통합할 수도 있습니다. 원하는 대로 모델을 선택하고 최대 토큰을 설정할 수도 있습니다."
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:81
 msgid "You can make use of the OpenAI API to help you generate content, or improve your writing while composing your resume."
 msgstr "OpenAI API를 사용하여 콘텐츠를 생성하거나 이력서를 작성하는 동안 글쓰기를 개선할 수 있습니다."
 
@@ -1668,7 +1735,11 @@ msgstr "OpenAI API를 사용하여 콘텐츠를 생성하거나 이력서를 작
 msgid "You can track the number of views your resume has received, or how many people have downloaded the resume by enabling public sharing."
 msgstr "공개 공유를 활성화하여 이력서가 조회된 횟수 또는 이력서를 다운로드한 사람의 수를 추적할 수 있습니다."
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:60
+#: apps/client/src/pages/public/error.tsx:20
+msgid "You don't have permission to access this page."
+msgstr ""
+
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:87
 msgid "You have the option to <0>obtain your own OpenAI API key</0>. This key empowers you to leverage the API as you see fit. Alternatively, if you wish to disable the AI features in Reactive Resume altogether, you can simply remove the key from your settings."
 msgstr "자신만의 <0>OpenAI API 키를 얻을</0> 수 있는 옵션이 있습니다. 이 키를 사용하면 원하는 대로 API를 활용할 수 있습니다. 또는 반응형 이력서에서 AI 기능을 완전히 비활성화하려면 설정에서 키를 제거하기만 하면 됩니다."
 
@@ -1685,7 +1756,7 @@ msgstr "메일이 도착했습니다!"
 msgid "Your account and all your data has been deleted successfully. Goodbye!"
 msgstr "계정과 모든 데이터가 성공적으로 삭제되었습니다. 안녕히 계세요!"
 
-#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:116
+#: apps/client/src/pages/dashboard/settings/_sections/openai.tsx:191
 msgid "Your API key is securely stored in the browser's local storage and is only utilized when making requests to OpenAI via their official SDK. Rest assured that your key is not transmitted to any external server except when interacting with OpenAI's services."
 msgstr "API 키는 브라우저의 로컬 저장소에 안전하게 저장되며 공식 SDK를 통해 OpenAI에 요청할 때만 활용됩니다. OpenAI의 서비스와 상호작용할 때를 제외하고는 키가 외부 서버로 전송되지 않으니 안심하세요."
 
@@ -1697,15 +1768,15 @@ msgstr "이메일 주소가 성공적으로 확인되었습니다."
 msgid "Your OpenAI API Key has not been set yet. Please go to your account settings to enable OpenAI Integration."
 msgstr "OpenAI API 키가 아직 설정되지 않았습니다. 계정 설정으로 이동하여 OpenAI 연동을 활성화하세요."
 
-#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:59
+#: apps/client/src/pages/dashboard/settings/_sections/security.tsx:56
 msgid "Your password has been updated successfully."
 msgstr "비밀번호가 성공적으로 업데이트되었습니다."
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:94
+#: apps/client/src/pages/builder/_components/toolbar.tsx:112
 msgid "Zoom In"
 msgstr "줌인"
 
-#: apps/client/src/pages/builder/_components/toolbar.tsx:100
+#: apps/client/src/pages/builder/_components/toolbar.tsx:118
 msgid "Zoom Out"
 msgstr "줌 아웃"
 

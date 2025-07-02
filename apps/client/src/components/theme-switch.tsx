@@ -1,14 +1,16 @@
 import { CloudSun, Moon, Sun } from "@phosphor-icons/react";
 import { useTheme } from "@reactive-resume/hooks";
 import { Button } from "@reactive-resume/ui";
-import { motion, Variants } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMemo } from "react";
 
 type Props = {
   size?: number;
+  className?: string;
 };
 
-export const ThemeSwitch = ({ size = 20 }: Props) => {
+export const ThemeSwitch = ({ size = 20, className }: Props) => {
   const { theme, toggleTheme } = useTheme();
 
   const variants: Variants = useMemo(() => {
@@ -20,7 +22,7 @@ export const ThemeSwitch = ({ size = 20 }: Props) => {
   }, [size]);
 
   return (
-    <Button size="icon" variant="ghost" onClick={toggleTheme}>
+    <Button size="icon" variant="ghost" className={className} onClick={toggleTheme}>
       <div className="cursor-pointer overflow-hidden" style={{ width: size, height: size }}>
         <motion.div animate={theme} variants={variants} className="flex">
           <Sun size={size} className="shrink-0" />

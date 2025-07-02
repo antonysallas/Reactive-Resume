@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException, Logger, OnModuleInit } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { createId } from "@paralleldrive/cuid2";
+import slugify from "@sindresorhus/slugify";
 import { MinioClient, MinioService } from "nestjs-minio-client";
 import sharp from "sharp";
 
@@ -98,7 +99,7 @@ export class StorageService implements OnModuleInit {
     }
   }
 
-  async bucketExists() {
+  async bucketExists(): Promise<true> {
     const exists = await this.client.bucketExists(this.bucketName);
 
     if (!exists) {
@@ -106,6 +107,8 @@ export class StorageService implements OnModuleInit {
         "There was an error while checking if the storage bucket exists.",
       );
     }
+
+    return exists;
   }
 
   async uploadObject(
@@ -113,17 +116,22 @@ export class StorageService implements OnModuleInit {
     type: UploadType,
     buffer: Buffer,
     filename: string = createId(),
-  ) {
+  ): Promise<string> {
     const extension = type === "resumes" ? "pdf" : "jpg";
     const storageUrl = this.configService.getOrThrow<string>("STORAGE_URL");
-    const filepath = `${userId}/${type}/${filename}.${extension}`;
+
+    let normalizedFilename = slugify(filename);
+    if (!normalizedFilename) normalizedFilename = createId();
+
+    const filepath = `${userId}/${type}/${normalizedFilename}.${extension}`;
     const url = `${storageUrl}/${filepath}`;
+
     const metadata =
       extension === "jpg"
         ? { "Content-Type": "image/jpeg" }
         : {
             "Content-Type": "application/pdf",
-            "Content-Disposition": `attachment; filename=${filename}.${extension}`,
+            "Content-Disposition": `attachment; filename=${normalizedFilename}.${extension}`,
           };
 
     try {
@@ -143,13 +151,12 @@ export class StorageService implements OnModuleInit {
     }
   }
 
-  async deleteObject(userId: string, type: UploadType, filename: string) {
+  async deleteObject(userId: string, type: UploadType, filename: string): Promise<void> {
     const extension = type === "resumes" ? "pdf" : "jpg";
     const path = `${userId}/${type}/${filename}.${extension}`;
 
     try {
       await this.client.removeObject(this.bucketName, path);
-      return;
     } catch {
       throw new InternalServerErrorException(
         `There was an error while deleting the document at the specified path: ${path}.`,
@@ -157,9 +164,8 @@ export class StorageService implements OnModuleInit {
     }
   }
 
-  async deleteFolder(prefix: string) {
+  async deleteFolder(prefix: string): Promise<void> {
     const objectsList = [];
-
     const objectsStream = this.client.listObjectsV2(this.bucketName, prefix, true);
 
     for await (const object of objectsStream) {
@@ -168,7 +174,6 @@ export class StorageService implements OnModuleInit {
 
     try {
       await this.client.removeObjects(this.bucketName, objectsList);
-      return;
     } catch {
       throw new InternalServerErrorException(
         `There was an error while deleting the folder at the specified path: ${this.bucketName}/${prefix}.`,

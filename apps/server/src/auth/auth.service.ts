@@ -159,11 +159,19 @@ export class AuthService {
     await this.mailService.sendEmail({ to: email, subject, text });
   }
 
-  async updatePassword(email: string, password: string) {
-    const hashedPassword = await this.hash(password);
+  async updatePassword(email: string, currentPassword: string, newPassword: string) {
+    const user = await this.userService.findOneByIdentifierOrThrow(email);
+
+    if (!user.secrets?.password) {
+      throw new BadRequestException(ErrorMessage.OAuthUser);
+    }
+
+    await this.validatePassword(currentPassword, user.secrets.password);
+
+    const newHashedPassword = await this.hash(newPassword);
 
     await this.userService.updateByEmail(email, {
-      secrets: { update: { password: hashedPassword } },
+      secrets: { update: { password: newHashedPassword } },
     });
   }
 
@@ -197,6 +205,19 @@ export class AuthService {
       this.configService.get("GOOGLE_CALLBACK_URL")
     ) {
       providers.push("google");
+    }
+
+    if (
+      this.configService.get("OPENID_AUTHORIZATION_URL") &&
+      this.configService.get("OPENID_CALLBACK_URL") &&
+      this.configService.get("OPENID_CLIENT_ID") &&
+      this.configService.get("OPENID_CLIENT_SECRET") &&
+      this.configService.get("OPENID_ISSUER") &&
+      this.configService.get("OPENID_SCOPE") &&
+      this.configService.get("OPENID_TOKEN_URL") &&
+      this.configService.get("OPENID_USER_INFO_URL")
+    ) {
+      providers.push("openid");
     }
 
     return providers;

@@ -20,8 +20,8 @@ import { cn } from "@reactive-resume/utils";
 import { useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { z } from "zod";
+import { Link } from "react-router";
+import type { z } from "zod";
 
 import { useLogin } from "@/client/services/auth";
 import { useFeatureFlags } from "@/client/services/feature";
@@ -89,7 +89,12 @@ export const LoginPage = () => {
                 <FormItem>
                   <FormLabel>{t`Email`}</FormLabel>
                   <FormControl>
-                    <Input placeholder="john.doe@example.com" {...field} />
+                    <Input
+                      autoComplete="email"
+                      className="lowercase"
+                      placeholder="john.doe@example.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription>{t`You can also enter your username.`}</FormDescription>
                   <FormMessage />
@@ -104,7 +109,7 @@ export const LoginPage = () => {
                 <FormItem>
                   <FormLabel>{t`Password`}</FormLabel>
                   <FormControl>
-                    <Input type="password" {...field} />
+                    <Input type="password" autoComplete="password" {...field} />
                   </FormControl>
                   <FormDescription>
                     <Trans>

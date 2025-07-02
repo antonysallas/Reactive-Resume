@@ -1,10 +1,8 @@
-import {
+import type {
   Award,
   Certification,
   CustomSection,
   CustomSectionGroup,
-  Education,
-  Experience,
   Interest,
   Language,
   Profile,
@@ -15,16 +13,15 @@ import {
   SectionWithItem,
   Skill,
   URL,
-  Volunteer,
 } from "@reactive-resume/schema";
-import { cn, isEmptyString, isUrl } from "@reactive-resume/utils";
+import { Education, Experience, Volunteer } from "@reactive-resume/schema";
+import { cn, isEmptyString, isUrl, sanitize } from "@reactive-resume/utils";
 import get from "lodash.get";
 import { Fragment } from "react";
 
 import { Picture } from "../components/picture";
 import { useArtboardStore } from "../store/artboard";
 import { TemplateProps } from "../types/template";
-import { getSocialIconUrl } from "../utils/social-icons";
 
 const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
@@ -71,8 +68,16 @@ const Header = () => {
           {basics.customFields.map((item) => (
             <div key={item.id} className="flex items-center gap-x-1.5">
               <i className={cn(`ph ph-bold ph-${item.icon}`, "text-primary")} />
-              <span className="text-primary">{item.name}</span>
-              <span>{item.value}</span>
+              {isUrl(item.value) ? (
+                <a href={item.value} target="_blank" rel="noreferrer noopener nofollow">
+                  {item.name || item.value}
+                </a>
+              ) : (
+                <>
+                  <span className="text-primary">{item.name}</span>
+                  <span>{item.value}</span>
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -99,9 +104,9 @@ const Summary = () => {
         </div>
 
         <div
-          dangerouslySetInnerHTML={{ __html: section.content }}
-          className="wysiwyg"
+          dangerouslySetInnerHTML={{ __html: sanitize(section.content) }}
           style={{ columns: section.columns }}
+          className="wysiwyg"
         />
       </div>
     </section>
@@ -211,7 +216,10 @@ const Section = <T,>({
                     {url !== undefined && section.separateLinks && <Link url={url} />}
 
                     {summary !== undefined && !isEmptyString(summary) && (
-                      <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
+                      <div
+                        dangerouslySetInnerHTML={{ __html: sanitize(summary) }}
+                        className="wysiwyg"
+                      />
                     )}
 
                     {keywords !== undefined && keywords.length > 0 && (
@@ -246,7 +254,10 @@ const Section = <T,>({
                     {url !== undefined && section.separateLinks && <Link url={url} />}
 
                     {summary !== undefined && !isEmptyString(summary) && (
-                      <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
+                      <div
+                        dangerouslySetInnerHTML={{ __html: sanitize(summary) }}
+                        className="wysiwyg"
+                      />
                     )}
 
                     {keywords !== undefined && keywords.length > 0 && (
@@ -264,7 +275,6 @@ const Section = <T,>({
 
 const Profiles = () => {
   const section = useArtboardStore((state) => state.resume.sections.profiles);
-  const fontSize = useArtboardStore((state) => state.resume.metadata.typography.font.size);
 
   return (
     <Section<Profile> section={section}>

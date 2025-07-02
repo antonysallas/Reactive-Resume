@@ -1,10 +1,8 @@
-import {
+import type {
   Award,
   Certification,
   CustomSection,
   CustomSectionGroup,
-  Education,
-  Experience,
   Interest,
   Language,
   Profile,
@@ -15,16 +13,15 @@ import {
   SectionWithItem,
   Skill,
   URL,
-  Volunteer,
 } from "@reactive-resume/schema";
-import { cn, isEmptyString, isUrl } from "@reactive-resume/utils";
+import { Education, Experience, Volunteer } from "@reactive-resume/schema";
+import { cn, isEmptyString, isUrl, sanitize } from "@reactive-resume/utils";
 import get from "lodash.get";
 import { Fragment } from "react";
 
 import { Picture } from "../components/picture";
 import { useArtboardStore } from "../store/artboard";
 import { TemplateProps } from "../types/template";
-import { getSocialIconUrl } from "../utils/social-icons";
 
 const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
@@ -83,7 +80,13 @@ const Header = () => {
               <Fragment key={item.id}>
                 <div className="flex items-center gap-x-1.5">
                   <i className={cn(`ph ph-bold ph-${item.icon}`, "text-primary")} />
-                  <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+                  {isUrl(item.value) ? (
+                    <a href={item.value} target="_blank" rel="noreferrer noopener nofollow">
+                      {item.name || item.value}
+                    </a>
+                  ) : (
+                    <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+                  )}
                 </div>
                 <div className="bg-text size-1 rounded-full last:hidden" />
               </Fragment>
@@ -105,9 +108,9 @@ const Summary = () => {
       <h4 className="mb-2 text-base font-bold">{section.name}</h4>
 
       <div
-        dangerouslySetInnerHTML={{ __html: section.content }}
-        className="wysiwyg"
+        dangerouslySetInnerHTML={{ __html: sanitize(section.content) }}
         style={{ columns: section.columns }}
+        className="wysiwyg"
       />
     </section>
   );
@@ -226,7 +229,10 @@ const Section = <T,>({
                 </div>
 
                 {summary !== undefined && !isEmptyString(summary) && (
-                  <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: sanitize(summary) }}
+                    className="wysiwyg"
+                  />
                 )}
 
                 {level !== undefined && level > 0 && <Rating level={level} />}
@@ -246,7 +252,6 @@ const Section = <T,>({
 
 const Profiles = () => {
   const section = useArtboardStore((state) => state.resume.sections.profiles);
-  const fontSize = useArtboardStore((state) => state.resume.metadata.typography.font.size);
 
   return (
     <Section<Profile> section={section}>
@@ -616,7 +621,12 @@ export const Ditto = ({ columns, isFirstPage = false }: TemplateProps) => {
           ))}
         </div>
 
-        <div className="main p-custom group col-span-2 space-y-4">
+        <div
+          className={cn(
+            "main p-custom group space-y-4",
+            sidebar.length > 0 ? "col-span-2" : "col-span-3",
+          )}
+        >
           {main.map((section) => (
             <Fragment key={section}>{mapSectionToComponent(section)}</Fragment>
           ))}

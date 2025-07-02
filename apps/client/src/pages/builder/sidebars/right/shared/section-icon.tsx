@@ -1,7 +1,8 @@
+import type { IconProps } from "@phosphor-icons/react";
 import {
+  Code,
   DiamondsFour,
   DownloadSimple,
-  IconProps,
   Info,
   Layout,
   Note,
@@ -12,13 +13,15 @@ import {
   Translate,
   TrendUp,
 } from "@phosphor-icons/react";
-import { Button, ButtonProps, Tooltip } from "@reactive-resume/ui";
+import type { ButtonProps } from "@reactive-resume/ui";
+import { Button, Tooltip } from "@reactive-resume/ui";
 
-export type MetadataKey =
+type MetadataKey =
   | "template"
   | "layout"
   | "typography"
   | "theme"
+  | "css"
   | "page"
   | "locale"
   | "sharing"
@@ -27,7 +30,7 @@ export type MetadataKey =
   | "notes"
   | "information";
 
-export const getSectionIcon = (id: MetadataKey, props: IconProps = {}) => {
+const getSectionIcon = (id: MetadataKey, props: IconProps = {}) => {
   switch (id) {
     // Left Sidebar
     case "notes": {
@@ -44,6 +47,9 @@ export const getSectionIcon = (id: MetadataKey, props: IconProps = {}) => {
     }
     case "theme": {
       return <Palette size={18} {...props} />;
+    }
+    case "css": {
+      return <Code size={18} {...props} />;
     }
     case "page": {
       return <ReadCvLogo size={18} {...props} />;
@@ -70,16 +76,17 @@ export const getSectionIcon = (id: MetadataKey, props: IconProps = {}) => {
   }
 };
 
-type SectionIconProps = ButtonProps & {
+type SectionIconProps = Omit<ButtonProps, "size"> & {
   id: MetadataKey;
   name: string;
+  size?: number;
   icon?: React.ReactNode;
 };
 
-export const SectionIcon = ({ id, name, icon, ...props }: SectionIconProps) => (
+export const SectionIcon = ({ id, name, icon, size = 14, ...props }: SectionIconProps) => (
   <Tooltip side="left" content={name}>
     <Button size="icon" variant="ghost" className="size-8 rounded-full" {...props}>
-      {icon ?? getSectionIcon(id, { size: 14 })}
+      {icon ?? getSectionIcon(id, { size })}
     </Button>
   </Tooltip>
 );

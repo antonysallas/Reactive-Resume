@@ -1,9 +1,8 @@
 import { HttpService } from "@nestjs/axios";
 import { Injectable, InternalServerErrorException, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import fontkit from "@pdf-lib/fontkit";
 import { ResumeDto } from "@reactive-resume/dto";
-import { ErrorMessage, getFontUrls } from "@reactive-resume/utils";
+import { ErrorMessage } from "@reactive-resume/utils";
 import retry from "async-retry";
 import { PDFDocument } from "pdf-lib";
 import { connect } from "puppeteer";
@@ -35,7 +34,7 @@ export class PrinterService {
     try {
       return await connect({
         browserWSEndpoint: this.browserURL,
-        ignoreHTTPSErrors: this.ignoreHTTPSErrors,
+        acceptInsecureCerts: this.ignoreHTTPSErrors,
       });
     } catch (error) {
       throw new InternalServerErrorException(
@@ -189,7 +188,20 @@ export class PrinterService {
           return temporaryHtml_;
         }, pageElement);
 
-        pagesBuffer.push(await page.pdf({ width, height, printBackground: true }));
+        // Apply custom CSS, if enabled
+        const css = resume.data.metadata.css;
+
+        if (css.visible) {
+          await page.evaluate((cssValue: string) => {
+            const styleTag = document.createElement("style");
+            styleTag.textContent = cssValue;
+            document.head.append(styleTag);
+          }, css.value);
+        }
+
+        const uint8array = await page.pdf({ width, height, printBackground: true });
+        const buffer = Buffer.from(uint8array);
+        pagesBuffer.push(buffer);
 
         await page.evaluate((temporaryHtml_: string) => {
           document.body.innerHTML = temporaryHtml_;
@@ -203,24 +215,6 @@ export class PrinterService {
 
       // Using 'pdf-lib', merge all the pages from their buffers into a single PDF
       const pdf = await PDFDocument.create();
-      pdf.registerFontkit(fontkit);
-
-      // Get information about fonts used in the resume from the metadata
-      const fontData = resume.data.metadata.typography.font;
-      const fontUrls = getFontUrls(fontData.family, fontData.variants);
-
-      // Load all the fonts from the URLs using HttpService
-      const responses = await Promise.all(
-        fontUrls.map((url) =>
-          this.httpService.axiosRef.get(url, {
-            responseType: "arraybuffer",
-          }),
-        ),
-      );
-      const fontsBuffer = responses.map((response) => response.data as ArrayBuffer);
-
-      // Embed all the fonts in the PDF
-      await Promise.all(fontsBuffer.map((buffer) => pdf.embedFont(buffer)));
 
       for (const element of pagesBuffer) {
         const page = await PDFDocument.load(element);
@@ -246,7 +240,12 @@ export class PrinterService {
 
       return resumeUrl;
     } catch (error) {
-      console.trace(error);
+      this.logger.error(error);
+
+      throw new InternalServerErrorException(
+        ErrorMessage.ResumePrinterError,
+        (error as Error).message,
+      );
     }
   }
 
@@ -326,7 +325,8 @@ export class PrinterService {
 
     // Save the JPEG to storage and return the URL
     // Store the URL in cache for future requests, under the previously generated hash digest
-    const buffer = await page.screenshot({ quality: 80, type: "jpeg" });
+    const uint8array = await page.screenshot({ quality: 80, type: "jpeg" });
+    const buffer = Buffer.from(uint8array);
 
     // Generate a hash digest of the resume data, this hash will be used to check if the resume has been updated
     const previewUrl = await this.storageService.uploadObject(

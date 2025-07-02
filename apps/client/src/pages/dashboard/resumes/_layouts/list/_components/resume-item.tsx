@@ -8,7 +8,7 @@ import {
   PencilSimple,
   TrashSimple,
 } from "@phosphor-icons/react";
-import { ResumeDto } from "@reactive-resume/dto";
+import type { ResumeDto } from "@reactive-resume/dto";
 import {
   Button,
   ContextMenu,
@@ -20,15 +20,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
 } from "@reactive-resume/ui";
 import dayjs from "dayjs";
-import { AnimatePresence, motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
-import { useResumePreview } from "@/client/services/resume/preview";
 import { useDialog } from "@/client/stores/dialog";
 
 import { BaseListItem } from "./base-item";
@@ -42,12 +37,10 @@ export const ResumeListItem = ({ resume }: Props) => {
   const { open } = useDialog<ResumeDto>("resume");
   const { open: lockOpen } = useDialog<ResumeDto>("lock");
 
-  const { url } = useResumePreview(resume.id);
-
   const lastUpdated = dayjs().to(resume.updatedAt);
 
   const onOpen = () => {
-    navigate(`/builder/${resume.id}`);
+    void navigate(`/builder/${resume.id}`);
   };
 
   const onUpdate = () => {
@@ -140,32 +133,13 @@ export const ResumeListItem = ({ resume }: Props) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger className="even:bg-secondary/20">
-        <HoverCard>
-          <HoverCardTrigger>
-            <BaseListItem
-              className="group"
-              title={resume.title}
-              description={t`Last updated ${lastUpdated}`}
-              end={dropdownMenu}
-              onClick={onOpen}
-            />
-          </HoverCardTrigger>
-          <HoverCardContent align="end" className="p-0" sideOffset={-100} alignOffset={100}>
-            <AnimatePresence>
-              {url && (
-                <motion.img
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  loading="lazy"
-                  alt={resume.title}
-                  className="aspect-[1/1.4142] w-60 rounded-sm object-cover"
-                  src={`${url}?cache=${Date.now()}`}
-                />
-              )}
-            </AnimatePresence>
-          </HoverCardContent>
-        </HoverCard>
+        <BaseListItem
+          className="group"
+          title={resume.title}
+          description={t`Last updated ${lastUpdated}`}
+          end={dropdownMenu}
+          onClick={onOpen}
+        />
       </ContextMenuTrigger>
 
       <ContextMenuContent>

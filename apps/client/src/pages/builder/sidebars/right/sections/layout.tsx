@@ -1,10 +1,8 @@
+import type { DragEndEvent, DragOverEvent, DragStartEvent } from "@dnd-kit/core";
 import {
   closestCenter,
   DndContext,
-  DragEndEvent,
-  DragOverEvent,
   DragOverlay,
-  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   useDroppable,
@@ -18,23 +16,18 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { t, Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import { ArrowCounterClockwise, DotsSixVertical, Plus, TrashSimple } from "@phosphor-icons/react";
 import { defaultMetadata } from "@reactive-resume/schema";
 import { Button, Portal, Tooltip } from "@reactive-resume/ui";
-import {
-  cn,
-  LayoutLocator,
-  moveItemInLayout,
-  parseLayoutLocator,
-  SortablePayload,
-} from "@reactive-resume/utils";
+import type { LayoutLocator, SortablePayload } from "@reactive-resume/utils";
+import { cn, moveItemInLayout, parseLayoutLocator } from "@reactive-resume/utils";
 import get from "lodash.get";
 import { useState } from "react";
 
 import { useResumeStore } from "@/client/stores/resume";
 
-import { getSectionIcon } from "../shared/section-icon";
+import { SectionIcon } from "../shared/section-icon";
 
 type ColumnProps = {
   id: string;
@@ -92,9 +85,7 @@ type SectionProps = {
 };
 
 const Section = ({ id, isDragging = false }: SectionProps) => {
-  const name = useResumeStore((state) =>
-    get(state.resume.data.sections, `${id}.name`, id),
-  ) as string;
+  const name = useResumeStore((state) => get(state.resume.data.sections, `${id}.name`, id));
 
   return (
     <div
@@ -203,8 +194,8 @@ export const LayoutSection = () => {
     <section id="layout" className="grid gap-y-6">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-x-4">
-          {getSectionIcon("layout")}
-          <h2 className="line-clamp-1 text-3xl font-bold">{t`Layout`}</h2>
+          <SectionIcon id="layout" size={18} name={t`Layout`} />
+          <h2 className="line-clamp-1 text-2xl font-bold lg:text-3xl">{t`Layout`}</h2>
         </div>
 
         <Tooltip content={t`Reset Layout`}>
@@ -229,13 +220,12 @@ export const LayoutSection = () => {
 
             const main = page[0];
             const sidebar = page[1];
+            const pageNumber = pageIndex + 1;
 
             return (
               <div key={pageIndex} className="rounded border p-3 pb-4">
                 <div className="flex items-center justify-between">
-                  <p className="mb-3 text-xs font-bold">
-                    <Trans>Page {pageIndex + 1}</Trans>
-                  </p>
+                  <p className="mb-3 text-xs font-bold">{t`Page ${pageNumber}`}</p>
 
                   {pageIndex !== 0 && (
                     <Tooltip content={t`Remove Page`}>
@@ -268,7 +258,7 @@ export const LayoutSection = () => {
 
         <Button variant="outline" className="ml-auto" onClick={onAddPage}>
           <Plus />
-          <span className="ml-2">{t`Add New Page`}</span>
+          <span className="ml-2 text-xs lg:text-sm">{t`Add New Page`}</span>
         </Button>
       </main>
     </section>

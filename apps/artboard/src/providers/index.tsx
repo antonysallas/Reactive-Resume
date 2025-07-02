@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { Outlet } from "react-router";
 
+import { helmetContext } from "../constants/helmet";
 import { useArtboardStore } from "../store/artboard";
 
 export const Providers = () => {
@@ -10,35 +12,28 @@ export const Providers = () => {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
-
       if (event.data.type === "SET_RESUME") setResume(event.data.payload);
-      if (event.data.type === "SET_THEME") {
-        event.data.payload === "dark"
-          ? document.documentElement.classList.add("dark")
-          : document.documentElement.classList.remove("dark");
-      }
     };
 
-    const resumeData = window.localStorage.getItem("resume");
-    if (resumeData) {
-      setResume(JSON.parse(resumeData));
-      return;
-    }
-
-    window.addEventListener("message", handleMessage);
+    window.addEventListener("message", handleMessage, false);
 
     return () => {
-      window.removeEventListener("message", handleMessage);
+      window.removeEventListener("message", handleMessage, false);
     };
-  }, [setResume]);
+  }, []);
 
-  // Only for testing, in production this will be fetched from window.postMessage
-  // useEffect(() => {
-  //   setResume(sampleResume);
-  // }, [setResume]);
+  useEffect(() => {
+    const resumeData = window.localStorage.getItem("resume");
+
+    if (resumeData) setResume(JSON.parse(resumeData));
+  }, [window.localStorage.getItem("resume")]);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!resume) return null;
 
-  return <Outlet />;
+  return (
+    <HelmetProvider context={helmetContext}>
+      <Outlet />
+    </HelmetProvider>
+  );
 };

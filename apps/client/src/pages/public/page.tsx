@@ -1,11 +1,12 @@
 import { t } from "@lingui/macro";
 import { CircleNotch, FilePdf } from "@phosphor-icons/react";
-import { ResumeDto } from "@reactive-resume/dto";
+import type { ResumeDto } from "@reactive-resume/dto";
 import { Button } from "@reactive-resume/ui";
 import { pageSizeMap } from "@reactive-resume/utils";
 import { useCallback, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, LoaderFunction, redirect, useLoaderData } from "react-router-dom";
+import type { LoaderFunction } from "react-router";
+import { Link, redirect, useLoaderData } from "react-router";
 
 import { Icon } from "@/client/components/icon";
 import { ThemeSwitch } from "@/client/components/theme-switch";
@@ -22,16 +23,16 @@ export const PublicResumePage = () => {
 
   const { printResume, loading } = usePrintResume();
 
-  const { id, title, data: resume } = useLoaderData() as ResumeDto;
-  const format = resume.metadata.page.format;
+  const { id, title, data: resume } = useLoaderData();
+  const format = resume.metadata.page.format as keyof typeof pageSizeMap;
 
   const updateResumeInFrame = useCallback(() => {
-    if (!frameRef.current?.contentWindow) return;
     const message = { type: "SET_RESUME", payload: resume };
-    (() => {
-      frameRef.current.contentWindow.postMessage(message, "*");
-    })();
-  }, [frameRef, resume]);
+
+    setImmediate(() => {
+      frameRef.current?.contentWindow?.postMessage(message, "*");
+    });
+  }, [frameRef.current, resume]);
 
   useEffect(() => {
     if (!frameRef.current) return;
@@ -76,7 +77,7 @@ export const PublicResumePage = () => {
 
       <div
         style={{ width: `${pageSizeMap[format].width}mm` }}
-        className="mx-auto mb-6 mt-16 overflow-hidden rounded shadow-xl print:m-0 print:shadow-none"
+        className="relative z-50 overflow-hidden rounded shadow-xl sm:mx-auto sm:mb-6 sm:mt-16 print:m-0 print:shadow-none"
       >
         <iframe
           ref={frameRef}
@@ -86,7 +87,7 @@ export const PublicResumePage = () => {
         />
       </div>
 
-      <div className="flex justify-center py-10 opacity-50 print:hidden">
+      <div className="hidden justify-center py-10 opacity-50 sm:flex print:hidden">
         <Link to="/">
           <Button size="sm" variant="ghost" className="space-x-1.5 text-xs font-normal">
             <span>{t`Built with`}</span>
@@ -96,12 +97,10 @@ export const PublicResumePage = () => {
         </Link>
       </div>
 
-      <div className="fixed bottom-5 right-5 print:hidden">
-        <div className="flex items-center gap-x-4">
-          <Button variant="outline" className="gap-x-2 rounded-full" onClick={onDownloadPdf}>
-            {loading ? <CircleNotch size={16} className="animate-spin" /> : <FilePdf size={16} />}
-            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-            <span>{t`Download PDF`}</span>
+      <div className="fixed bottom-5 right-5 z-0 hidden sm:block print:hidden">
+        <div className="flex flex-col items-center gap-y-2">
+          <Button size="icon" variant="ghost" onClick={onDownloadPdf}>
+            {loading ? <CircleNotch size={20} className="animate-spin" /> : <FilePdf size={20} />}
           </Button>
 
           <ThemeSwitch />

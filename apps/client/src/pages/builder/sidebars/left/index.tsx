@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { Plus, PlusCircle } from "@phosphor-icons/react";
-import {
+import type {
   Award,
   Certification,
   CustomSection,
@@ -17,7 +17,7 @@ import {
 } from "@reactive-resume/schema";
 import { Button, ScrollArea, Separator } from "@reactive-resume/ui";
 import { Fragment, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 import { Icon } from "@/client/components/icon";
 import { UserAvatar } from "@/client/components/user-avatar";
@@ -161,7 +161,7 @@ export const LeftSidebar = () => {
       </div>
 
       <ScrollArea orientation="vertical" className="h-screen flex-1 pb-16 lg:pb-0">
-        <div ref={containterRef} className="grid gap-y-6 p-6 @container/left">
+        <div ref={containterRef} className="grid gap-y-10 p-6 @container/left">
           <BasicsSection />
           <Separator />
           <SummarySection />

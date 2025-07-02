@@ -1,7 +1,17 @@
 import { useBreakpoint } from "@reactive-resume/hooks";
-import { Panel, PanelGroup, PanelResizeHandle, Sheet, SheetContent } from "@reactive-resume/ui";
+import {
+  Panel,
+  PanelGroup,
+  PanelResizeHandle,
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  VisuallyHidden,
+} from "@reactive-resume/ui";
 import { cn } from "@reactive-resume/utils";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 
 import { useBuilderStore } from "@/client/stores/builder";
 
@@ -78,6 +88,13 @@ export const BuilderLayout = () => {
   return (
     <div className="relative">
       <Sheet open={sheet.left.open} onOpenChange={sheet.left.setOpen}>
+        <VisuallyHidden>
+          <SheetHeader>
+            <SheetTitle />
+            <SheetDescription />
+          </SheetHeader>
+        </VisuallyHidden>
+
         <SheetContent
           side="left"
           showClose={false}
@@ -97,6 +114,13 @@ export const BuilderLayout = () => {
           className="top-16 p-0 sm:max-w-xl"
           onOpenAutoFocus={onOpenAutoFocus}
         >
+          <VisuallyHidden>
+            <SheetHeader>
+              <SheetTitle />
+              <SheetDescription />
+            </SheetHeader>
+          </VisuallyHidden>
+
           <RightSidebar />
         </SheetContent>
       </Sheet>

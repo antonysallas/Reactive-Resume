@@ -1,7 +1,8 @@
 import { t } from "@lingui/macro";
 import { createId } from "@paralleldrive/cuid2";
 import { CopySimple, PencilSimple, Plus } from "@phosphor-icons/react";
-import { SectionItem, SectionWithItem } from "@reactive-resume/schema";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import type { SectionItem, SectionWithItem } from "@reactive-resume/schema";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,17 +15,20 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   Form,
+  ScrollArea,
 } from "@reactive-resume/ui";
 import { produce } from "immer";
 import get from "lodash.get";
 import { useEffect } from "react";
-import { UseFormReturn } from "react-hook-form";
+import type { UseFormReturn } from "react-hook-form";
 
-import { DialogName, useDialog } from "@/client/stores/dialog";
+import type { DialogName } from "@/client/stores/dialog";
+import { useDialog } from "@/client/stores/dialog";
 import { useResumeStore } from "@/client/stores/resume";
 
 type Props<T extends SectionItem> = {
@@ -144,32 +148,41 @@ export const SectionDialog = <T extends SectionItem>({
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent className="z-50">
         <Form {...form}>
-          <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-            <DialogHeader>
-              <DialogTitle>
-                <div className="flex items-center space-x-2.5">
-                  {isCreate && <Plus />}
-                  {isUpdate && <PencilSimple />}
-                  {isDuplicate && <CopySimple />}
-                  <h2>
-                    {isCreate && t`Create a new item`}
-                    {isUpdate && t`Update an existing item`}
-                    {isDuplicate && t`Duplicate an existing item`}
-                  </h2>
-                </div>
-              </DialogTitle>
-            </DialogHeader>
+          <ScrollArea>
+            <form
+              className="max-h-[60vh] space-y-6 lg:max-h-fit"
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
+              <DialogHeader>
+                <DialogTitle>
+                  <div className="flex items-center space-x-2.5">
+                    {isCreate && <Plus />}
+                    {isUpdate && <PencilSimple />}
+                    {isDuplicate && <CopySimple />}
+                    <h2>
+                      {isCreate && t`Create a new item`}
+                      {isUpdate && t`Update an existing item`}
+                      {isDuplicate && t`Duplicate an existing item`}
+                    </h2>
+                  </div>
+                </DialogTitle>
 
-            {children}
+                <VisuallyHidden>
+                  <DialogDescription />
+                </VisuallyHidden>
+              </DialogHeader>
 
-            <DialogFooter>
-              <Button type="submit">
-                {isCreate && t`Create`}
-                {isUpdate && t`Save Changes`}
-                {isDuplicate && t`Duplicate`}
-              </Button>
-            </DialogFooter>
-          </form>
+              {children}
+
+              <DialogFooter>
+                <Button type="submit">
+                  {isCreate && t`Create`}
+                  {isUpdate && t`Save Changes`}
+                  {isDuplicate && t`Duplicate`}
+                </Button>
+              </DialogFooter>
+            </form>
+          </ScrollArea>
         </Form>
       </DialogContent>
     </Dialog>

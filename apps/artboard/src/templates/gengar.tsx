@@ -1,10 +1,8 @@
-import {
+import type {
   Award,
   Certification,
   CustomSection,
   CustomSectionGroup,
-  Education,
-  Experience,
   Interest,
   Language,
   Profile,
@@ -15,16 +13,15 @@ import {
   SectionWithItem,
   Skill,
   URL,
-  Volunteer,
 } from "@reactive-resume/schema";
-import { cn, hexToRgb, isEmptyString, isUrl } from "@reactive-resume/utils";
+import { Education, Experience, Volunteer } from "@reactive-resume/schema";
+import { cn, hexToRgb, isEmptyString, isUrl, sanitize } from "@reactive-resume/utils";
 import get from "lodash.get";
 import { Fragment } from "react";
 
 import { Picture } from "../components/picture";
 import { useArtboardStore } from "../store/artboard";
 import { TemplateProps } from "../types/template";
-import { getSocialIconUrl } from "../utils/social-icons";
 
 const Header = () => {
   const basics = useArtboardStore((state) => state.resume.basics);
@@ -66,7 +63,13 @@ const Header = () => {
           <Fragment key={item.id}>
             <div className="flex items-center gap-x-1.5">
               <i className={cn(`ph ph-bold ph-${item.icon}`)} />
-              <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+              {isUrl(item.value) ? (
+                <a href={item.value} target="_blank" rel="noreferrer noopener nofollow">
+                  {item.name || item.value}
+                </a>
+              ) : (
+                <span>{[item.name, item.value].filter(Boolean).join(": ")}</span>
+              )}
             </div>
           </Fragment>
         ))}
@@ -77,17 +80,20 @@ const Header = () => {
 
 const Summary = () => {
   const section = useArtboardStore((state) => state.resume.sections.summary);
+  const primaryColor = useArtboardStore((state) => state.resume.metadata.theme.primary);
 
   if (!section.visible || isEmptyString(section.content)) return null;
 
   return (
-    <section id={section.id}>
-      <div
-        dangerouslySetInnerHTML={{ __html: section.content }}
-        className="wysiwyg"
-        style={{ columns: section.columns }}
-      />
-    </section>
+    <div className="p-custom space-y-4" style={{ backgroundColor: hexToRgb(primaryColor, 0.2) }}>
+      <section id={section.id}>
+        <div
+          dangerouslySetInnerHTML={{ __html: sanitize(section.content) }}
+          style={{ columns: section.columns }}
+          className="wysiwyg"
+        />
+      </section>
+    </div>
   );
 };
 
@@ -203,7 +209,10 @@ const Section = <T,>({
                 </div>
 
                 {summary !== undefined && !isEmptyString(summary) && (
-                  <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: sanitize(summary) }}
+                    className="wysiwyg"
+                  />
                 )}
 
                 {level !== undefined && level > 0 && <Rating level={level} />}
@@ -221,7 +230,6 @@ const Section = <T,>({
 
 const Profiles = () => {
   const section = useArtboardStore((state) => state.resume.sections.profiles);
-  const fontSize = useArtboardStore((state) => state.resume.metadata.typography.font.size);
 
   return (
     <Section<Profile> section={section}>
@@ -594,15 +602,8 @@ export const Gengar = ({ columns, isFirstPage = false }: TemplateProps) => {
         </div>
       </div>
 
-      <div className="main group col-span-2">
-        {isFirstPage && (
-          <div
-            className="p-custom space-y-4"
-            style={{ backgroundColor: hexToRgb(primaryColor, 0.2) }}
-          >
-            <Summary />
-          </div>
-        )}
+      <div className={cn("main group", sidebar.length > 0 ? "col-span-2" : "col-span-3")}>
+        {isFirstPage && <Summary />}
 
         <div className="p-custom space-y-4">
           {main.map((section) => (
